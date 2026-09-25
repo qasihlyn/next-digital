@@ -1,0 +1,1702 @@
+/* =========================================================
+   CONTACT — LIQUID GLASS / WHITE + BLACK + NEON GREEN
+   ========================================================= */
+
+.contact-cta {
+    /* =====================================================
+       LOCAL COLOUR SYSTEM
+       ===================================================== */
+
+    --contact-white: #ffffff;
+    --contact-paper: #f8f9f7;
+
+    --contact-black: #0b0d0c;
+    --contact-muted: #69716c;
+
+    --contact-neon: #39ff14;
+    --contact-neon-soft: rgba(57, 255, 20, 0.08);
+    --contact-neon-medium: rgba(57, 255, 20, 0.16);
+    --contact-neon-glow: rgba(57, 255, 20, 0.22);
+    --contact-neon-border: rgba(57, 255, 20, 0.32);
+
+    --contact-glass: rgba(255, 255, 255, 0.68);
+    --contact-glass-soft: rgba(255, 255, 255, 0.42);
+    --contact-glass-border: rgba(255, 255, 255, 0.82);
+
+    --contact-dark-border: rgba(11, 13, 12, 0.08);
+    --contact-dark-border-soft: rgba(11, 13, 12, 0.045);
+
+    --contact-shadow: rgba(11, 13, 12, 0.08);
+    --contact-shadow-soft: rgba(11, 13, 12, 0.035);
+
+    /* =====================================================
+       BASE
+       ===================================================== */
+
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    padding:
+        clamp(110px, 12vw, 175px)
+        clamp(20px, 6vw, 104px)
+        42px;
+
+    background:
+        radial-gradient(
+            circle at 8% 12%,
+            var(--contact-neon-soft),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 90% 72%,
+            rgba(57, 255, 20, 0.045),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(11, 13, 12, 0.025),
+            transparent 35%
+        ),
+        var(--contact-paper);
+}
+
+
+/* =========================================================
+   MICRO TEXTURE
+   ========================================================= */
+
+.contact-cta::before {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    content: "";
+
+    opacity: 0.018;
+
+    pointer-events: none;
+
+    background-image:
+        radial-gradient(
+            rgba(11, 13, 12, 0.65) 0.5px,
+            transparent 0.5px
+        );
+
+    background-size: 5px 5px;
+}
+
+
+/* =========================================================
+   BACKGROUND GRID
+   ========================================================= */
+
+.contact-grid {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    pointer-events: none;
+
+    opacity: 0.16;
+
+    background-image:
+        linear-gradient(
+            rgba(11, 13, 12, 0.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(11, 13, 12, 0.035) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        clamp(70px, 7vw, 110px)
+        clamp(70px, 7vw, 110px);
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            transparent,
+            black 15%,
+            black 85%,
+            transparent
+        );
+
+    -webkit-mask-image:
+        linear-gradient(
+            to bottom,
+            transparent,
+            black 15%,
+            black 85%,
+            transparent
+        );
+}
+
+
+/* =========================================================
+   AMBIENT ORBS
+   ========================================================= */
+
+.contact-orb {
+    position: absolute;
+    z-index: -1;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    filter: blur(70px);
+
+    will-change: transform;
+}
+
+
+/* =========================================================
+   TOP RIGHT ORB
+   ========================================================= */
+
+.contact-orb-one {
+    top: -18%;
+    right: -13%;
+
+    width: min(46vw, 700px);
+
+    aspect-ratio: 1;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(57, 255, 20, 0.13),
+            rgba(57, 255, 20, 0.045) 42%,
+            transparent 70%
+        );
+}
+
+
+/* =========================================================
+   BOTTOM LEFT ORB
+   ========================================================= */
+
+.contact-orb-two {
+    bottom: 2%;
+    left: -17%;
+
+    width: min(36vw, 540px);
+
+    aspect-ratio: 1;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(57, 255, 20, 0.065),
+            transparent 70%
+        );
+}
+
+
+/* =========================================================
+   FLOATING GLASS SHAPES
+   ========================================================= */
+
+.contact-glass-shape {
+    position: absolute;
+    z-index: -1;
+
+    border:
+        1px solid
+        var(--contact-glass-border);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.58),
+            rgba(255, 255, 255, 0.16)
+        );
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.95),
+
+        inset 0 -1px 0
+        rgba(11, 13, 12, 0.025),
+
+        0 20px 50px
+        rgba(11, 13, 12, 0.055);
+
+    backdrop-filter:
+        var(--glass-filter, blur(20px));
+
+    -webkit-backdrop-filter:
+        var(--glass-filter, blur(20px));
+}
+
+
+/* =========================================================
+   FLOATING SHAPE ONE
+   ========================================================= */
+
+.shape-one {
+    top: 18%;
+    left: -64px;
+
+    width: 130px;
+
+    aspect-ratio: 1;
+}
+
+
+/* =========================================================
+   FLOATING SHAPE TWO
+   ========================================================= */
+
+.shape-two {
+    right: 4%;
+    bottom: 16%;
+
+    width: 90px;
+
+    aspect-ratio: 1;
+}
+
+
+/* =========================================================
+   LAYOUT
+   ========================================================= */
+
+.contact-shell,
+.contact-signoff {
+    position: relative;
+    z-index: 1;
+}
+
+
+.contact-shell {
+    display: grid;
+
+    align-items: center;
+
+    width: min(1240px, 100%);
+
+    min-height:
+        min(
+            720px,
+            calc(100svh - 140px)
+        );
+
+    margin: 0 auto;
+
+    grid-template-columns:
+        minmax(0, 0.9fr)
+        minmax(430px, 1fr);
+
+    gap:
+        clamp(55px, 8vw, 125px);
+}
+
+
+/* =========================================================
+   INTRO
+   ========================================================= */
+
+.contact-intro {
+    padding-bottom: var(--space-md, 30px);
+}
+
+
+/* =========================================================
+   EYEBROW
+   ========================================================= */
+
+.contact-eyebrow {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    margin-bottom: 28px;
+
+    color:
+        var(--contact-black);
+
+    font-family:
+        var(
+            --font-display,
+            "Manrope",
+            system-ui,
+            sans-serif
+        );
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    line-height: 1;
+
+    letter-spacing: 0.14em;
+
+    text-transform: uppercase;
+}
+
+
+.contact-eyebrow::before {
+    width: 7px;
+    height: 7px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    content: "";
+
+    background:
+        var(--contact-neon);
+
+    box-shadow:
+        0 0 0 5px
+        var(--contact-neon-soft),
+
+        0 0 16px
+        var(--contact-neon-glow);
+}
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.contact-title {
+    margin: 0;
+
+    color:
+        var(--contact-black);
+
+    font-family:
+        var(
+            --font-display,
+            "Manrope",
+            system-ui,
+            sans-serif
+        );
+
+    font-size:
+        clamp(
+            3.8rem,
+            6.8vw,
+            7.4rem
+        );
+
+    font-weight: 800;
+
+    line-height: 0.86;
+
+    letter-spacing: -0.075em;
+}
+
+
+/* =========================================================
+   INDIVIDUAL TITLE LINES
+   ========================================================= */
+
+.contact-title-line {
+    display: block;
+
+    overflow: hidden;
+     color:
+        #000000;
+
+    padding-bottom: 0.05em;
+}
+
+
+.contact-title-line > span {
+    display: block;
+     color:
+        #000000;
+
+    will-change:
+        transform,
+        opacity;
+}
+
+
+/* =========================================================
+   NEON TITLE ACCENT
+   ========================================================= */
+
+.contact-title-accent {
+    color:
+        var(--contact-neon);
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.contact-description {
+    max-width: 430px;
+
+    margin:
+        clamp(28px, 4vw, 38px)
+        0
+        0;
+
+    color:
+        var(--contact-muted);
+
+    font-family:
+        var(
+            --font-display,
+            "Manrope",
+            system-ui,
+            sans-serif
+        );
+
+    font-size: 16px;
+
+    font-weight: 450;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   EMAIL
+   ========================================================= */
+
+.contact-email {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 26px;
+
+    padding-bottom: 6px;
+
+    border-bottom:
+        1px solid
+        var(--contact-dark-border);
+
+    color:
+        var(--contact-black);
+
+    font-family:
+        var(
+            --font-display,
+            "Manrope",
+            system-ui,
+            sans-serif
+        );
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.02em;
+
+    transition:
+        color 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        );
+}
+
+
+.contact-email:hover {
+    border-color:
+        var(--contact-neon);
+
+    color:
+        var(--contact-black);
+
+    transform:
+        translateX(5px);
+}
+
+
+.contact-email-dot {
+    width: 7px;
+    height: 7px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background:
+        var(--contact-neon);
+
+    box-shadow:
+        0 0 12px
+        var(--contact-neon-glow);
+}
+
+
+/* =========================================================
+   LIQUID GLASS FORM CARD
+   ========================================================= */
+
+.contact-form-card {
+    position: relative;
+
+    padding:
+        clamp(24px, 3vw, 42px);
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        var(--contact-glass-border);
+
+    border-radius:
+        clamp(22px, 2.2vw, 30px);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.74),
+            rgba(255, 255, 255, 0.38)
+        );
+
+    box-shadow:
+        0 24px 65px
+        var(--contact-shadow),
+
+        0 8px 25px
+        var(--contact-shadow-soft),
+
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.98),
+
+        inset 0 -1px 0
+        rgba(11, 13, 12, 0.025);
+
+    backdrop-filter:
+        var(
+            --glass-filter-strong,
+            blur(28px)
+        );
+
+    -webkit-backdrop-filter:
+        var(
+            --glass-filter-strong,
+            blur(28px)
+        );
+
+    will-change:
+        transform,
+        opacity;
+
+    transition:
+        transform 0.45s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        ),
+
+        box-shadow 0.45s ease,
+
+        border-color 0.35s ease;
+}
+
+
+/* =========================================================
+   SPECULAR GLASS HIGHLIGHT
+   ========================================================= */
+
+.contact-form-card::before {
+    position: absolute;
+
+    inset: 1px;
+
+    z-index: 0;
+
+    border-radius: inherit;
+
+    content: "";
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.78),
+            rgba(255, 255, 255, 0.20) 27%,
+            transparent 50%,
+            transparent 72%,
+            rgba(255, 255, 255, 0.15)
+        );
+}
+
+
+/* =========================================================
+   NEON AMBIENT LIGHT
+   ========================================================= */
+
+.contact-form-card::after {
+    position: absolute;
+
+    top: -150px;
+    right: -150px;
+
+    width: 350px;
+
+    aspect-ratio: 1;
+
+    border-radius: 50%;
+
+    content: "";
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(57, 255, 20, 0.10),
+            transparent 70%
+        );
+
+    filter:
+        blur(60px);
+}
+
+
+.contact-form-card:hover {
+    border-color:
+        rgba(255, 255, 255, 0.98);
+
+    box-shadow:
+        0 30px 75px
+        rgba(11, 13, 12, 0.10),
+
+        0 10px 28px
+        rgba(11, 13, 12, 0.045),
+
+        0 0 40px
+        rgba(57, 255, 20, 0.055),
+
+        inset 0 1px 0
+        rgba(255, 255, 255, 1),
+
+        inset 0 -1px 0
+        rgba(11, 13, 12, 0.025);
+
+    transform:
+        translateY(-4px);
+}
+
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.contact-form {
+    position: relative;
+
+    z-index: 1;
+
+    display: grid;
+
+    gap: 14px;
+}
+
+
+/* =========================================================
+   FORM FIELD
+   ========================================================= */
+
+.form-field {
+    position: relative;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+
+/* =========================================================
+   LABEL
+   ========================================================= */
+
+.form-field label {
+    position: static;
+
+    display: block;
+
+    padding: 0;
+
+    margin: 0;
+
+    color:
+        var(--contact-black);
+
+    font-family:
+        var(
+            --font-display,
+            "Manrope",
+            system-ui,
+            sans-serif
+        );
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    line-height: 1;
+
+    letter-spacing: 0.12em;
+
+    text-transform: uppercase;
+
+    pointer-events: auto;
+
+    opacity: 1;
+
+    transform: none;
+
+    transition:
+        color 0.25s ease;
+}
+
+
+/* =========================================================
+   LABEL NEON INDICATOR
+   ========================================================= */
+
+.form-field label::before {
+    display: inline-block;
+
+    width: 5px;
+    height: 5px;
+
+    margin-right: 7px;
+
+    border-radius: 50%;
+
+    content: "";
+
+    background:
+        var(--contact-neon);
+
+    box-shadow:
+        0 0 8px
+        var(--contact-neon-glow);
+
+    vertical-align: 1px;
+}
+
+
+.form-field:focus-within label {
+    color:
+        var(--contact-black);
+}
+
+
+/* =========================================================
+   INPUT / SELECT / TEXTAREA
+   ========================================================= */
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+    width: 100%;
+
+    border:
+        1px solid
+        var(--contact-dark-border);
+
+    border-radius: 16px;
+
+    outline: none;
+
+    color:
+        var(--contact-black);
+
+    background:
+        rgba(255, 255, 255, 0.48);
+
+    box-shadow:
+        0 5px 18px
+        rgba(11, 13, 12, 0.025),
+
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.92),
+
+        inset 0 -1px 0
+        rgba(11, 13, 12, 0.018);
+
+    backdrop-filter:
+        blur(14px);
+
+    -webkit-backdrop-filter:
+        blur(14px);
+
+    font-family:
+        var(
+            --font-display,
+            "Manrope",
+            system-ui,
+            sans-serif
+        );
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    transition:
+        border-color 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        );
+}
+
+
+/* =========================================================
+   INPUTS
+   ========================================================= */
+
+.form-field input,
+.form-field select {
+    height: 62px;
+
+    padding:
+        0 18px;
+}
+
+
+.form-field textarea {
+    min-height: 125px;
+
+    padding:
+        17px 18px;
+
+    resize: vertical;
+}
+
+
+/* =========================================================
+   PLACEHOLDER
+   ========================================================= */
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+    color:
+        rgba(105, 113, 108, 0.48);
+}
+
+
+/* =========================================================
+   FOCUS
+   ========================================================= */
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+    border-color:
+        var(--contact-neon-border);
+
+    background:
+        rgba(255, 255, 255, 0.72);
+
+    box-shadow:
+        0 0 0 4px
+        var(--contact-neon-soft),
+
+        0 0 25px
+        rgba(57, 255, 20, 0.08),
+
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.96);
+
+    transform:
+        translateY(-1px);
+}
+
+
+/* =========================================================
+   SELECT
+   ========================================================= */
+
+.form-field select {
+    cursor: pointer;
+
+    appearance: none;
+
+    -webkit-appearance: none;
+
+    padding-right: 48px;
+
+    background-image:
+
+        linear-gradient(
+            45deg,
+            transparent 50%,
+            var(--contact-black) 50%
+        ),
+
+        linear-gradient(
+            135deg,
+            var(--contact-black) 50%,
+            transparent 50%
+        );
+
+    background-position:
+
+        calc(100% - 21px) 27px,
+
+        calc(100% - 16px) 27px;
+
+    background-size:
+        5px 5px,
+        5px 5px;
+
+    background-repeat:
+        no-repeat;
+}
+
+
+/* =========================================================
+   DROPDOWN OPTIONS
+   ========================================================= */
+
+.form-field select option {
+    padding:
+        12px 16px;
+
+    color:
+        var(--contact-black);
+
+    background:
+        #ffffff;
+
+    font-family:
+        var(
+            --font-display,
+            "Manrope",
+            system-ui,
+            sans-serif
+        );
+
+    font-size: 14px;
+}
+
+
+.form-field select option:checked {
+    color:
+        var(--contact-black);
+
+    background:
+        #eaffdf;
+}
+
+
+/* =========================================================
+   SUBMIT AREA
+   ========================================================= */
+
+.contact-submit-wrap {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 18px;
+
+    margin-top: 8px;
+}
+
+
+/* =========================================================
+   SUBMIT BUTTON
+   ========================================================= */
+
+.contact-submit {
+    position: relative;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    min-width: 220px;
+
+    min-height: 56px;
+
+    padding:
+        0 18px 0 22px;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        var(--contact-neon);
+
+    border-radius: 999px;
+
+    color:
+        var(--contact-black);
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff 0%,
+            #ffffff 42%,
+            #efffe9 70%,
+            var(--contact-neon) 100%
+        );
+
+    box-shadow:
+        0 12px 28px
+        rgba(11, 13, 12, 0.08),
+
+        0 0 25px
+        var(--contact-neon-soft),
+
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.85);
+
+    font-family:
+        var(
+            --font-display,
+            "Manrope",
+            system-ui,
+            sans-serif
+        );
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.1em;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.35s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        ),
+
+        box-shadow 0.35s ease,
+
+        filter 0.3s ease;
+}
+
+
+/* =========================================================
+   BUTTON SPECULAR SWEEP
+   ========================================================= */
+
+.contact-submit::before {
+    position: absolute;
+
+    top: 0;
+    left: -110%;
+
+    width: 65%;
+    height: 100%;
+
+    content: "";
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.72),
+            transparent
+        );
+
+    transform:
+        skewX(-20deg);
+
+    transition:
+        left 0.65s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        );
+}
+
+
+/* =========================================================
+   BUTTON ARROW
+   ========================================================= */
+
+.contact-submit i {
+    position: relative;
+
+    z-index: 1;
+
+    display: grid;
+
+    width: 30px;
+    height: 30px;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    color:
+        #ffffff;
+
+    background:
+        var(--contact-black);
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size: 17px;
+
+    font-style: normal;
+
+    transition:
+        transform 0.35s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        );
+}
+
+
+/* =========================================================
+   BUTTON HOVER
+   ========================================================= */
+
+.contact-submit:hover {
+    box-shadow:
+        0 18px 38px
+        rgba(11, 13, 12, 0.11),
+
+        0 0 35px
+        var(--contact-neon-glow),
+
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.95);
+
+    transform:
+        translateY(-3px);
+
+    filter:
+        saturate(1.08);
+}
+
+
+.contact-submit:hover::before {
+    left: 135%;
+}
+
+
+.contact-submit:hover i {
+    transform:
+        translateX(4px)
+        rotate(-8deg);
+}
+
+
+/* =========================================================
+   RESPONSE TEXT
+   ========================================================= */
+
+.contact-response {
+    max-width: 155px;
+
+    margin: 0;
+
+    color:
+        var(--contact-muted);
+
+    font-family:
+        var(
+            --font-display,
+            "Manrope",
+            system-ui,
+            sans-serif
+        );
+
+    font-size: 11px;
+
+    font-weight: 450;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   SIGNOFF
+   ========================================================= */
+
+.contact-signoff {
+    width: min(1240px, 100%);
+
+    margin:
+        clamp(95px, 13vw, 160px)
+        auto
+        0;
+}
+
+
+/* =========================================================
+   SIGNOFF LINE
+   ========================================================= */
+
+.contact-signoff-line {
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--contact-neon),
+            rgba(57, 255, 20, 0.22) 22%,
+            rgba(11, 13, 12, 0.07) 55%,
+            rgba(11, 13, 12, 0.025) 80%,
+            transparent
+        );
+}
+
+
+/* =========================================================
+   SIGNOFF LABEL
+   ========================================================= */
+
+.contact-signoff > p {
+    margin:
+        18px 0 32px;
+
+    color:
+        var(--contact-black);
+
+    font-family:
+        var(
+            --font-display,
+            "Manrope",
+            system-ui,
+            sans-serif
+        );
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    line-height: 1;
+
+    letter-spacing: 0.14em;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   BRAND ROW
+   ========================================================= */
+
+.contact-brand-row {
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+
+.contact-brand-row strong,
+.contact-brand-row span {
+    display: block;
+}
+
+
+/* =========================================================
+   BRAND NAME
+   ========================================================= */
+
+.contact-brand-row strong {
+    color:
+        var(--contact-black);
+
+    font-family:
+        var(
+            --font-display,
+            "Manrope",
+            system-ui,
+            sans-serif
+        );
+
+    font-size:
+        clamp(
+            1.8rem,
+            3vw,
+            2.7rem
+        );
+
+    font-weight: 800;
+
+    line-height: 0.9;
+
+    letter-spacing: -0.065em;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   BRAND SUBTEXT
+   ========================================================= */
+
+.contact-brand-row span {
+    margin-top: 10px;
+
+    color:
+        var(--contact-muted);
+
+    font-family:
+        var(
+            --font-display,
+            "Manrope",
+            system-ui,
+            sans-serif
+        );
+
+    font-size: 9px;
+
+    font-weight: 600;
+
+    line-height: 1.3;
+
+    letter-spacing: 0.1em;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   BACK TO TOP
+   ========================================================= */
+
+.back-to-top {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding:
+        0 0 7px;
+
+    border: 0;
+
+    border-bottom:
+        1px solid
+        var(--contact-dark-border);
+
+    color:
+        var(--contact-black);
+
+    background:
+        transparent;
+
+    font-family:
+        var(
+            --font-display,
+            "Manrope",
+            system-ui,
+            sans-serif
+        );
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.09em;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.25s ease,
+        color 0.25s ease,
+        transform 0.3s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        );
+}
+
+
+.back-to-top span {
+    color:
+        var(--contact-neon);
+
+    transition:
+        transform 0.3s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        );
+}
+
+
+.back-to-top:hover {
+    border-color:
+        var(--contact-neon);
+
+    color:
+        var(--contact-black);
+
+    transform:
+        translateY(-3px);
+}
+
+
+.back-to-top:hover span {
+    transform:
+        translateY(-4px);
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 980px) {
+
+    .contact-shell {
+        min-height: auto;
+
+        grid-template-columns:
+            minmax(0, 0.8fr)
+            minmax(390px, 1fr);
+
+        gap: 45px;
+    }
+
+
+    .contact-title {
+        font-size:
+            clamp(
+                3.6rem,
+                7vw,
+                6rem
+            );
+    }
+
+
+    .contact-submit-wrap {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .contact-response {
+        max-width: none;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 760px) {
+
+    .contact-cta {
+        padding:
+            105px 22px 38px;
+    }
+
+
+    .contact-shell {
+        grid-template-columns: 1fr;
+
+        gap: 48px;
+    }
+
+
+    .contact-title {
+        font-size:
+            clamp(
+                3.7rem,
+                13.5vw,
+                6rem
+            );
+
+        line-height: 0.87;
+    }
+
+
+    .contact-description {
+        max-width: 500px;
+    }
+
+
+    .contact-form-card {
+        padding:
+            22px;
+    }
+
+
+    .contact-signoff {
+        margin-top: 90px;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .contact-cta {
+        padding:
+            90px 16px 30px;
+    }
+
+
+    .contact-title {
+        font-size:
+            clamp(
+                3.25rem,
+                15.5vw,
+                5rem
+            );
+
+        line-height: 0.88;
+
+        letter-spacing: -0.07em;
+    }
+
+
+    .contact-description {
+        margin-top: 25px;
+
+        font-size: 14px;
+
+        line-height: 1.7;
+    }
+
+
+    .contact-email {
+        font-size: 10px;
+    }
+
+
+    .contact-form-card {
+        padding:
+            17px;
+
+        border-radius:
+            22px;
+    }
+
+
+    .form-field input,
+    .form-field select {
+        height: 58px;
+    }
+
+
+    .form-field textarea {
+        min-height: 115px;
+    }
+
+
+    .contact-submit {
+        width: 100%;
+
+        min-height: 54px;
+    }
+
+
+    .contact-submit-wrap {
+        gap: 14px;
+    }
+
+
+    .contact-response {
+        font-size: 10px;
+    }
+
+
+    .contact-brand-row {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .shape-one,
+    .shape-two {
+        display: none;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .contact-form-card,
+    .contact-submit,
+    .contact-submit i,
+    .contact-email,
+    .back-to-top,
+    .back-to-top span,
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+        transition: none !important;
+    }
+
+
+    .contact-form-card:hover,
+    .contact-submit:hover,
+    .form-field input:focus,
+    .form-field select:focus,
+    .form-field textarea:focus {
+        transform: none;
+    }
+}

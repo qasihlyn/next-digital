@@ -1,0 +1,642 @@
+/* =========================================================
+   NEXT DIGITAL — UNIFIED GLOBAL DESIGN SYSTEM
+   ========================================================= */
+
+:root {
+    /* ============================================================
+       TYPOGRAPHY
+       ============================================================ */
+    
+    --font-primary: "Manrope", system-ui, sans-serif;
+    --font-mono: "DM Mono", monospace;
+    
+    /* Font sizes for consistent scale */
+    --text-xs: 9px;
+    --text-sm: 10px;
+    --text-base: 13px;
+    --text-md: 14px;
+    --text-lg: 15px;
+
+    /* Large-scale content/heading type tokens */
+    --text-xl: clamp(24px, 2.4vw, 32px);
+    --text-2xl: clamp(34px, 4vw, 52px);
+    --text-display: clamp(42px, 6.6vw, 88px);
+
+    /* Font weights */
+    --weight-regular: 500;
+    --weight-semibold: 600;
+    --weight-bold: 700;
+    --weight-xbold: 800;
+    
+    /* ============================================================
+       COLORS
+       ============================================================ */
+    
+    /* Primary text & surfaces */
+    --ink: #101310;
+    --ink-soft: #4e584d;
+    --muted: #667064;
+    --paper: #f7f8f4;
+    --paper-bright: #ffffff;
+    
+    /* ------------------------------------------------------------
+       SEMANTIC COLOR LAYER (canonical — new code should use these)
+       ------------------------------------------------------------ */
+    --color-bg: var(--paper);
+    --color-surface: var(--paper-bright);
+    --color-surface-glass: rgba(255, 255, 255, 0.62);
+    --color-text: var(--ink);
+    --color-text-muted: var(--muted);
+    --color-border: var(--line);
+    --color-accent: #39ff14;
+    --color-accent-strong: #61a900;
+    --color-accent-soft: rgba(57, 255, 20, 0.12);
+    --color-accent-glow: rgba(57, 255, 20, 0.45);
+
+    /* Accent system (neon green) — legacy names, aliased onto the
+       semantic layer above so every pre-existing var(--green) /
+       var(--mint-ink) consumer picks up the canonical accent
+       without needing to be individually migrated. */
+    --green: var(--color-accent);
+    --green-dark: var(--color-accent-strong);
+    --green-light: #a8ff78;
+    --green-deep: var(--color-accent-strong);
+    --mint-ink: var(--color-accent-strong);
+    --mint-deep: var(--color-accent-strong);
+    --mint-glow: var(--color-accent-glow);
+
+    /* Shared neutral palette for phone-mockup style components
+       (converts.css, film-row.css both build one independently;
+       this just stops the same hex values being duplicated). */
+    --phone-bezel-a: #333d42;
+    --phone-bezel-b: #182023;
+    --phone-bezel-c: #1e2528;
+    --phone-bezel-d: #0d1214;
+
+    /* Utility colors */
+    --line: rgba(16, 19, 16, 0.13);
+    --line-soft: rgba(16, 19, 16, 0.07);
+    --line-weaker: rgba(16, 19, 16, 0.045);
+    --glass: rgba(255, 255, 255, 0.62);
+    
+    /* ============================================================
+       SPACING SYSTEM
+       ============================================================ */
+    
+    --space-xs: 8px;
+    --space-sm: 12px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 32px;
+    --space-2xl: 48px;
+    
+    /* Section spacing */
+    --space-section: clamp(88px, 10vw, 160px);
+    --space-section-sm: clamp(72px, 8vw, 130px);
+    
+    /* ============================================================
+       BORDER RADIUS SYSTEM
+       ============================================================ */
+    
+    --radius-sm: 18px;
+    --radius-md: 24px;
+    --radius-lg: 30px;
+    --radius-xl: 32px;
+    --radius-pill: 999px;
+    
+    /* ============================================================
+       SHADOW SYSTEM
+       ============================================================ */
+    
+    --shadow-xs: 0 4px 14px rgba(16, 19, 16, 0.08);
+    --shadow-sm: 0 8px 24px rgba(16, 19, 16, 0.12);
+    --shadow-md: 0 18px 50px rgba(16, 19, 16, 0.1);
+    --shadow-lg: 0 30px 70px rgba(16, 19, 16, 0.15);
+    --shadow-xl: 0 45px 105px rgba(16, 19, 16, 0.18);
+    
+    /* Inset shadows for glass effect */
+    --shadow-inset-bright: 0 1px 0 rgba(255, 255, 255, 0.98) inset;
+    --shadow-inset-soft: 0 1px 0 rgba(255, 255, 255, 0.82) inset;
+    --shadow-inset-weak: 0 1px 0 rgba(255, 255, 255, 0.16) inset;
+    
+    /* ============================================================
+       GLASS SYSTEM
+       ============================================================ */
+    
+    /* Glass backgrounds */
+    --glass-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(245, 249, 240, 0.65));
+    --glass-bg-strong: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.62));
+    --glass-bg-light: linear-gradient(140deg, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.43));
+    
+    /* Glass borders */
+    --glass-border: rgba(255, 255, 255, 0.82);
+    --glass-border-weak: rgba(255, 255, 255, 0.52);
+    --glass-border-strong: rgba(255, 255, 255, 0.9);
+    --glass-border-hair: rgba(16, 19, 16, 0.08);
+    
+    /* Glass effects */
+    --glass-blur: 28px;
+    --glass-blur-strong: 36px;
+    --glass-blur-soft: 22px;
+    --glass-saturate: 145%;
+    --glass-saturate-strong: 170%;
+    
+    /* Combined backdrop filter */
+    --glass-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+    --glass-filter-strong: blur(var(--glass-blur-strong)) saturate(var(--glass-saturate-strong));
+    /* Fixes momentum.css's previously-undefined var(--glass-filter-soft) reference */
+    --glass-filter-soft: blur(var(--glass-blur-soft)) saturate(var(--glass-saturate));
+
+    /* ============================================================
+       ANIMATION SYSTEM
+       ============================================================ */
+    
+    /* Durations */
+    --dur-fast: 200ms;
+    --dur-base: 300ms;
+    --dur-slow: 500ms;
+    --dur-slower: 800ms;
+    
+    /* Easing functions */
+    --ease-linear: linear;
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-in-out: ease-in-out;
+    
+    /* Font family fallbacks for sections */
+    --font-display: var(--font-primary);
+    --font-body: var(--font-primary);
+}
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+}
+
+html {
+    min-width: 320px;
+    background: var(--paper);
+    scroll-behavior: smooth;
+}
+
+body {
+    min-width: 320px;
+    overflow-x: hidden;
+    color: var(--ink);
+    background: var(--color-bg);
+    font-family: var(--font-primary);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+/* =========================================================
+   CONTINUOUS BACKGROUND ATMOSPHERE
+   One shared, independently-animated layer behind every
+   section — replaces per-section background fills so the
+   whole page reads as one environment instead of eight.
+   ========================================================= */
+
+.bg-atmosphere {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.bg-atmosphere-shape {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    will-change: transform;
+}
+
+.bg-atmosphere-shape.shape-a {
+    top: -12%;
+    left: -10%;
+    width: min(58vw, 780px);
+    aspect-ratio: 1;
+    background: radial-gradient(circle, var(--color-accent-soft), transparent 70%);
+    animation: section-glow-drift 32s var(--ease-in-out) infinite alternate;
+}
+
+.bg-atmosphere-shape.shape-b {
+    right: -12%;
+    bottom: -16%;
+    width: min(50vw, 700px);
+    aspect-ratio: 1;
+    background: radial-gradient(circle, rgba(16, 19, 16, 0.035), transparent 72%);
+    animation: section-glow-drift 40s var(--ease-in-out) infinite alternate-reverse;
+}
+
+.bg-atmosphere-glow {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    width: min(90vw, 1100px);
+    aspect-ratio: 1;
+    background: radial-gradient(circle, var(--color-accent-glow), transparent 65%);
+    opacity: 0.08;
+    filter: blur(120px);
+    transform: translate3d(-50%, -50%, 0);
+    animation: atmosphere-breathe 18s ease-in-out infinite;
+}
+
+@keyframes atmosphere-breathe {
+    0%, 100% {
+        opacity: 0.06;
+        transform: translate3d(-50%, -50%, 0) scale(1);
+    }
+
+    50% {
+        opacity: 0.11;
+        transform: translate3d(-50%, -50%, 0) scale(1.08);
+    }
+}
+
+@media (max-width: 800px) {
+    .bg-atmosphere-shape {
+        filter: blur(60px);
+    }
+
+    .bg-atmosphere-glow {
+        filter: blur(80px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .bg-atmosphere-shape,
+    .bg-atmosphere-glow {
+        animation: none;
+    }
+}
+
+img,
+picture,
+svg,
+video,
+canvas {
+    display: block;
+    max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+::selection {
+    color: var(--ink);
+    background: var(--green);
+}
+
+/* =========================================================
+   GLOBAL NOISE
+   ========================================================= */
+
+.noise {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    pointer-events: none;
+    opacity: 0.052;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.44'/%3E%3C/svg%3E");
+}
+
+/* =========================================================
+   REUSABLE COMPONENT CLASSES
+   ========================================================= */
+
+/* Glass effect component */
+.glass {
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    box-shadow: 
+        var(--shadow-inset-bright),
+        0 -1px 0 rgba(30, 40, 20, 0.045) inset,
+        var(--shadow-md);
+    backdrop-filter: var(--glass-filter);
+    -webkit-backdrop-filter: var(--glass-filter);
+}
+
+@media (hover: hover) {
+    .glass {
+        transition: 
+            transform 500ms var(--ease-spring),
+            box-shadow 500ms var(--ease-out),
+            border-color 400ms ease;
+    }
+
+    .glass:hover {
+        border-color: rgba(57, 255, 20, 0.52);
+        box-shadow: 
+            var(--shadow-inset-bright),
+            var(--shadow-lg),
+            0 0 30px rgba(57, 255, 20, 0.11);
+        transform: translateY(-4px);
+    }
+}
+
+/* =========================================================
+   MICRO-INTERACTION UTILITIES
+   Reusable classes so buttons/CTAs across sections share one
+   hover/pointer response instead of each inventing its own.
+   ========================================================= */
+
+.magnetic {
+    will-change: transform;
+}
+
+.glow-border {
+    transition:
+        border-color var(--dur-base) ease,
+        box-shadow var(--dur-base) ease;
+}
+
+.glow-border:hover,
+.glow-border:focus-visible {
+    border-color: var(--color-accent);
+    box-shadow:
+        0 0 0 1px var(--color-accent-soft),
+        0 0 24px var(--color-accent-glow);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .magnetic,
+    .glow-border {
+        transition: none !important;
+    }
+}
+
+/* =========================================================
+   TYPOGRAPHY
+   ========================================================= */
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: var(--muted);
+    font: var(--weight-regular) var(--text-sm) / 1.4 var(--font-mono);
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+}
+
+.eyebrow::before {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    content: "";
+    background: var(--green);
+    box-shadow: 0 0 0 5px rgba(57, 255, 20, 0.12);
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--font-primary);
+    font-weight: var(--weight-xbold);
+}
+
+h2 span {
+    color: var(--green-dark);
+}
+
+/* =========================================================
+   PAGE / FULL-SCREEN SECTIONS
+   ========================================================= */
+
+main {
+    position: relative;
+    z-index: 20;
+    overflow: clip;
+    /* No opaque fill here on purpose — the shared .bg-atmosphere
+       layer needs to show through any gaps between sections.
+       Each section paints its own surface where it needs one. */
+}
+
+.section,
+#main-content > div > .features {
+    position: relative;
+    min-height: 100svh;
+    overflow: hidden;
+}
+
+.section {
+    display: grid;
+    align-content: center;
+    width: min(1200px, 90%);
+    margin: 0 auto;
+    padding: var(--space-section) 0;
+}
+
+.camera-section,
+.momentum {
+    min-height: 0;
+}
+
+.section::before {
+    position: absolute;
+    top: 8%;
+    right: -12%;
+    z-index: -1;
+    width: min(28vw, 380px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    content: "";
+    pointer-events: none;
+    opacity: 0.75;
+    background: radial-gradient(circle, rgba(57, 255, 20, 0.1), transparent 68%);
+    filter: blur(18px);
+    animation: section-glow-drift 13s var(--ease-in-out) infinite alternate;
+}
+
+.section-head {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 25px;
+    margin-bottom: clamp(42px, 5vw, 76px);
+}
+
+.section-head h2 {
+    max-width: 780px;
+    color: var(--ink);
+    font-size: clamp(42px, 6.6vw, 88px);
+    font-weight: var(--weight-xbold);
+    line-height: 0.86;
+    letter-spacing: -0.09em;
+    text-wrap: balance;
+}
+
+.section-head p {
+    max-width: 235px;
+    color: var(--muted);
+    font-size: var(--text-base);
+    font-weight: var(--weight-regular);
+    line-height: 1.62;
+}
+
+/* =========================================================
+   GENERIC SCROLL REVEAL
+   ========================================================= */
+
+html.js .reveal {
+    opacity: 0;
+    transform: translate3d(0, 28px, 0);
+    transition: 
+        opacity 800ms ease,
+        transform 1000ms var(--ease-out);
+}
+
+html.js .reveal.in-view {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
+
+html.js .reveal.reveal-delay-1 {
+    transition-delay: 100ms;
+}
+
+html.js .reveal.reveal-delay-2 {
+    transition-delay: 200ms;
+}
+
+html.js .reveal.reveal-delay-3 {
+    transition-delay: 300ms;
+}
+
+/* =========================================================
+   SHARED AMBIENT MOTION
+   ========================================================= */
+
+@keyframes section-glow-drift {
+    from {
+        transform: translate3d(-4%, -5%, 0) scale(0.9);
+    }
+
+    to {
+        transform: translate3d(13%, 11%, 0) scale(1.14);
+    }
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 800px) {
+    .section {
+        width: min(100% - 44px, 680px);
+        min-height: 100svh;
+        padding: 110px 0 90px;
+    }
+
+    .section-head {
+        display: block;
+        margin-bottom: 45px;
+    }
+
+    .section-head h2 {
+        font-size: clamp(42px, 10vw, 68px);
+    }
+
+    .section-head p {
+        margin-top: 22px;
+    }
+
+    .services,
+    .work-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .service:nth-child(n),
+    .project:nth-child(n) {
+        margin-top: 0;
+    }
+
+    .service {
+        height: 320px;
+    }
+
+    .statement {
+        padding: 110px 0;
+    }
+
+    .project {
+        min-height: 320px !important;
+    }
+
+    .cta {
+        min-height: 460px;
+        padding: 30px;
+    }
+
+    .bubble {
+        width: 90vw;
+    }
+}
+
+@media (max-width: 560px) {
+    .section {
+        width: min(100% - 36px, 540px);
+        min-height: 100svh;
+        padding: 96px 0 76px;
+    }
+
+    .section-head h2 {
+        font-size: clamp(39px, 11.5vw, 56px);
+        line-height: 0.9;
+    }
+
+    .section-head p {
+        max-width: 290px;
+        font-size: var(--text-sm);
+    }
+}
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    html.js .reveal,
+    html.js .reveal.in-view {
+        opacity: 1;
+        transform: none;
+    }
+}

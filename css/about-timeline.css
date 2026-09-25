@@ -1,0 +1,118 @@
+/* =========================================================
+   NEXT DIGITAL — ABOUT / SECTION 4: TIMELINE
+   Requires about-shared.css to be loaded first (shared tokens
+   and utilities: .about-container, .cyber-label, .section-title).
+   ========================================================= */
+
+.futuristic-timeline{
+  position:relative;
+  max-width:900px;
+  margin:0 auto;
+}
+
+.timeline-spine{
+  position:absolute;
+  left:50%; top:0; bottom:0;
+  width:2px;
+  background:var(--about-glass-hair);
+  transform:translateX(-50%);
+}
+
+.timeline-spine-glow{
+  position:absolute;
+  left:50%; top:0;
+  width:2px; height:100%;
+  background:linear-gradient(180deg, var(--about-mint-deep), var(--about-mint));
+  box-shadow:0 0 14px var(--about-mint-glow);
+  /* Driven by ScrollTrigger's scrub in js/about.js as the user
+     scrolls through the timeline — transform, not height, so it
+     stays off the layout/paint path on every scroll frame. */
+  transform:translateX(-50%) scaleY(0);
+  transform-origin:top;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .timeline-spine-glow{transform:translateX(-50%) scaleY(1);}
+}
+
+.timeline-item{
+  position:relative;
+  width:46%;
+  margin-bottom:64px;
+  opacity:0;
+  transition:opacity var(--about-dur-slow) var(--about-ease-out), transform var(--about-dur-slow) var(--about-ease-out);
+}
+
+.timeline-item.left-slide{
+  left:0; text-align:right; padding-right:44px;
+  transform:translateX(-30px);
+}
+
+.timeline-item.right-slide{
+  left:54%; text-align:left; padding-left:44px;
+  transform:translateX(30px);
+}
+
+.timeline-item.in{opacity:1; transform:translateX(0);}
+
+.timeline-node{
+  position:absolute;
+  top:6px;
+  width:14px; height:14px;
+  border-radius:50%;
+  background:var(--about-mint-deep);
+  box-shadow:0 0 0 4px rgba(57,255,20,.25), 0 0 16px var(--about-mint-glow);
+}
+
+.timeline-item.left-slide .timeline-node{right:-7px;}
+
+.timeline-item.right-slide .timeline-node{left:-7px;}
+
+.timeline-meta{
+  font-family:'Inter', sans-serif;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.16em;
+  color:var(--about-mint-ink);
+  margin-bottom:10px;
+}
+
+.timeline-content-card{
+  padding:26px 28px;
+  background:var(--about-glass);
+  backdrop-filter:blur(var(--about-blur-lg));
+  -webkit-backdrop-filter:blur(var(--about-blur-lg));
+  border:1px solid var(--about-glass-border);
+  border-radius:var(--about-radius-md);
+  box-shadow:0 8px 24px rgba(16,19,16,.12), inset 0 1px 0 rgba(255,255,255,.82);
+  transition:border-color var(--about-dur-fast), transform var(--about-dur-fast), box-shadow var(--about-dur-fast), background var(--about-dur-fast);
+}
+
+.timeline-content-card:hover{
+  border-color:rgba(57,255,20,.55);
+  background:var(--about-glass-strong);
+  box-shadow:0 20px 44px -18px rgba(20,216,0,.35), inset 0 1px 0 rgba(255,255,255,.82);
+}
+
+.timeline-content-card h4{
+  font-family:'Inter', sans-serif;
+  font-size:18px;
+  font-weight:600;
+  color:var(--about-ink);
+  margin-bottom:8px;
+}
+
+.timeline-content-card p{
+  font-size:14px;
+  line-height:1.6;
+  color:var(--about-ink-soft);
+}
+
+@media (max-width:768px){
+  .timeline-spine, .timeline-spine-glow{left:20px;}
+  .timeline-item{width:100%; padding-left:50px !important; padding-right:0 !important; text-align:left !important;}
+  .timeline-item.left-slide{transform:translateX(30px);}
+  .timeline-item.right-slide{left:0; transform:translateX(30px);}
+  .timeline-item.left-slide .timeline-node{left:13px; right:auto;}
+  .timeline-item.right-slide .timeline-node{left:13px;}
+}

@@ -1,0 +1,42 @@
+/* =========================================================
+   NEXT DIGITAL — CONTACT / SECTION 1: HERO
+   Requires about-shared.css to be loaded first (shared tokens
+   and utilities: .about-container, .cyber-label, .reveal-*).
+   ========================================================= */
+
+.contact-hero{
+  position:relative;
+  padding:150px 40px 90px;
+  text-align:left;
+  overflow:hidden;
+}
+
+.contact-hero-title{
+  max-width:780px;
+  margin:22px 0 26px;
+
+  font-family:'Inter', sans-serif;
+  font-weight:800;
+  font-size:clamp(2.4rem,5.2vw,4rem);
+  line-height:1.08;
+  letter-spacing:-.02em;
+  color:var(--about-ink);
+}
+
+.gradient-word{
+  background:linear-gradient(135deg, #000000 0%, var(--about-mint) 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.contact-hero-sub{
+  max-width:560px;
+  font-size:17px;
+  line-height:1.7;
+  color:var(--about-ink-soft);
+}
+
+@media (max-width:768px){
+  .contact-hero{padding:120px 24px 60px;}
+}

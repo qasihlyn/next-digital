@@ -1,0 +1,375 @@
+/* =========================================================================
+   NEXT DIGITAL — FLOATING LIQUID GLASS NAVBAR
+
+   The standalone template's liquid-glass nav (glare layer, sliding
+   active-pill, moving scan-line, pulsing logo) rehomed onto this
+   project:
+     • Positioned like the site's previous nav — a compact pill that
+       floats a little below the top edge, centred, detached from the
+       page edges (not edge-to-edge).
+     • Undefined template vars (--glass-soft, --sky-deep, --blur-*,
+       --shadow-inset) fall back to project tokens from global.css.
+     • .nav-mark carries the wordmark logo (public/logo.png, trimmed of
+       its transparent padding) with object-fit: contain so nothing is
+       ever cropped. Original untrimmed file kept as logo-original.png.
+     • .btn-pill is the single CTA, shown at every breakpoint.
+     • .active-pill / .liquid-glare are driven by js/navbar.js.
+   ========================================================================= */
+
+
+/* -------------------------------------------------------------------------
+   1. Floating, centred, detached container
+   ------------------------------------------------------------------------- */
+.nav {
+    /* fixed, not sticky: body has `overflow-x: hidden`, which makes it
+       the scroll container and stops `position: sticky` on a body-level
+       child from ever sticking. The previous nav was fixed too. */
+    position: fixed;
+    top: 18px;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: min(1160px, calc(100% - 48px));
+    height: 56px;
+    margin-inline: auto;
+    padding: 0 10px 0 18px;
+    border-radius: var(--radius-pill, 999px);
+
+    /* Deep backdrop blur & high-contrast liquid fill */
+    background: var(--glass-soft, rgba(255, 255, 255, 0.62));
+    backdrop-filter: blur(34px) saturate(180%);
+    -webkit-backdrop-filter: blur(34px) saturate(180%);
+
+    /* Liquid caustic rim & drop shadows */
+    box-shadow:
+        0 18px 40px -14px rgba(10, 30, 25, 0.16),
+        0 4px 12px -4px rgba(10, 30, 25, 0.08),
+        inset 0 1px 1px 0 rgba(255, 255, 255, 0.95),
+        inset 0 -2px 4px -1px rgba(97, 169, 0, 0.18),
+        0 0 0 1px rgba(255, 255, 255, 0.55);
+
+    transition:
+        background 0.35s ease,
+        box-shadow 0.35s ease,
+        height 0.35s ease;
+    overflow: hidden;
+}
+
+/* 2. Curved wet reflection sheen */
+.nav::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 52%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+    pointer-events: none;
+    z-index: 6;
+}
+
+/* Moving bottom light scan line */
+.nav::after {
+    content: "";
+    position: absolute;
+    left: -30%;
+    bottom: 0;
+    width: 60%;
+    height: 1.5px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--mint-deep, #61a900),
+        var(--sky-deep, #38bdf8),
+        transparent
+    );
+    animation: navGlow 7s linear infinite;
+    opacity: 0.7;
+    pointer-events: none;
+    z-index: 7;
+}
+
+@keyframes navGlow {
+    0% { left: -30%; }
+    100% { left: 100%; }
+}
+
+/* 3. Interactive mouse light glare layer */
+.liquid-glare-container {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.liquid-glare {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    background: radial-gradient(circle 120px at var(--x, 50%) var(--y, 50%), rgba(255, 255, 255, 0.85) 0%, transparent 100%);
+    mix-blend-mode: overlay;
+}
+
+.nav:hover .liquid-glare {
+    opacity: 1;
+}
+
+/* -------------------------------------------------------------------------
+   4. Left brand / logo group
+   ------------------------------------------------------------------------- */
+.nav-left {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    z-index: 8;
+}
+
+.nav-mark {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    flex-shrink: 0;
+}
+
+/* Soft pulsing bloom behind the wordmark. Wider than tall to sit under
+   the "NEXT DIGITAL" lockup rather than the template's round icon. */
+.nav-mark::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 116%;
+    height: 160%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(ellipse, rgba(255, 255, 255, 0.85) 0%, rgba(110, 255, 92, 0.42) 28%, rgba(255, 255, 255, 0.22) 54%, transparent 80%);
+    filter: blur(9px);
+    animation: logoPulse 3.5s ease-in-out infinite;
+    z-index: 0;
+}
+
+/* Trimmed wordmark — contain so the full "NEXT DIGITAL" lockup shows
+   with nothing cropped, height-driven so it never squashes. */
+.nav-mark img {
+    position: relative;
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    z-index: 2;
+    transition:
+        transform 0.35s var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)),
+        filter 0.35s ease;
+    filter: drop-shadow(0 2px 6px rgba(40, 90, 75, 0.22));
+}
+
+.nav-mark:hover img {
+    transform: scale(1.05) rotate(-3deg);
+    filter: drop-shadow(0 4px 12px rgba(40, 150, 110, 0.38));
+}
+
+@keyframes logoPulse {
+    0% { transform: translate(-50%, -50%) scale(0.95); opacity: 0.65; }
+    50% { transform: translate(-50%, -50%) scale(1.08); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(0.95); opacity: 0.65; }
+}
+
+/* Optional text brand — not rendered by default (the wordmark logo
+   already carries the name); kept for reuse. */
+.brand {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: var(--ink);
+    white-space: nowrap;
+}
+
+/* -------------------------------------------------------------------------
+   5. Right nav items & sliding pill
+   ------------------------------------------------------------------------- */
+.nav-right {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    z-index: 8;
+}
+
+/* Springy sliding highlight — positioned by js/navbar.js */
+.active-pill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 999px;
+    box-shadow:
+        0 4px 14px rgba(97, 169, 0, 0.2),
+        0 1px 3px rgba(0, 0, 0, 0.08),
+        inset 0 1px 1px #ffffff;
+    border: 1px solid rgba(97, 169, 0, 0.3);
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition:
+        transform 0.5s cubic-bezier(0.34, 1.2, 0.64, 1),
+        width 0.5s cubic-bezier(0.34, 1.2, 0.64, 1),
+        opacity 0.35s ease,
+        background 0.5s ease,
+        box-shadow 0.5s ease;
+    z-index: 1;
+}
+
+.active-pill.is-visible {
+    opacity: 1;
+}
+
+.navlink {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 36px;
+    padding: 0 15px;
+    font-family: var(--font-display, system-ui, sans-serif);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    background: transparent;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: color 0.15s ease;
+    outline: none;
+    z-index: 2;
+}
+
+.navlink-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    pointer-events: none;
+    transition: transform 0.2s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.navlink:active .navlink-content {
+    transform: scale(0.92);
+}
+
+.navlink.active,
+.navlink:hover {
+    color: var(--mint-ink);
+}
+
+.navlink:focus-visible {
+    outline: 2px solid var(--mint-ink);
+    outline-offset: 2px;
+}
+
+/* -------------------------------------------------------------------------
+   6. CTA — .btn-pill closes .nav-right at every breakpoint
+   ------------------------------------------------------------------------- */
+.btn-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    height: 40px;
+    padding: 0 18px;
+    margin-left: 8px;
+    border-radius: 999px;
+    font-family: var(--font-display, system-ui, sans-serif);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    color: var(--mint-ink);
+    background: linear-gradient(135deg, rgba(110, 255, 92, 0.35), rgba(255, 255, 255, 0.28));
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(var(--blur-md, 18px));
+    -webkit-backdrop-filter: blur(var(--blur-md, 18px));
+    box-shadow: 0 8px 20px -12px rgba(40, 150, 110, 0.35), var(--shadow-inset, var(--shadow-inset-soft));
+    transition:
+        transform 0.35s var(--ease-spring, cubic-bezier(0.22, 1, 0.36, 1)),
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+    z-index: 2;
+    will-change: transform;
+}
+
+.btn-pill .navlink-content {
+    transition: transform 0.2s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.btn-pill:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 14px 34px -14px rgba(40, 150, 110, 0.45), var(--shadow-inset, var(--shadow-inset-soft));
+    background: linear-gradient(135deg, rgba(110, 255, 92, 0.5), rgba(255, 255, 255, 0.4));
+}
+
+.btn-pill:active { transform: translateY(0) scale(0.98); }
+
+.btn-pill:focus-visible {
+    outline: 2px solid var(--mint-ink);
+    outline-offset: 2px;
+}
+
+/* -------------------------------------------------------------------------
+   7. Responsive
+   ------------------------------------------------------------------------- */
+@media (max-width: 980px) {
+    .nav-right { gap: 1px; }
+
+    .navlink {
+        padding: 0 10px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 760px) {
+    .nav {
+        top: 12px;
+        width: calc(100% - 24px);
+        height: 54px;
+        padding: 0 10px 0 16px;
+    }
+
+    .navlink { display: none; }
+
+    .active-pill { display: none; }
+
+    .btn-pill { margin-left: 0; }
+}
+
+/* -------------------------------------------------------------------------
+   8. Accessibility — honour reduced-motion like the rest of the system
+   ------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+    .nav,
+    .nav-mark img,
+    .active-pill,
+    .navlink,
+    .navlink-content,
+    .btn-pill,
+    .liquid-glare {
+        transition: none !important;
+    }
+
+    .nav::after,
+    .nav-mark::before {
+        animation: none !important;
+    }
+
+    .nav-mark:hover img,
+    .btn-pill:hover {
+        transform: none;
+    }
+}

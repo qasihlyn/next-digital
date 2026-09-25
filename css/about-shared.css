@@ -1,0 +1,174 @@
+/* =========================================================
+   NEXT DIGITAL — ABOUT PAGE SHARED TOKENS & UTILITIES
+   Premium Glassmorphism / Soft Mint Theme
+
+   Carries the ABOUT PAGE shared tokens and shared utility
+   classes (cyber-label, section-title, reveal animations,
+   .about-container) used by every about-*.css file.
+   Load this file BEFORE the other about-*.css files.
+   ========================================================= */
+
+:root{
+  --about-bg-0:#FBFEFC;
+
+  --about-ink:#111827;
+  --about-ink-soft:#4b5563;
+  --about-ink-faint:#5f6b76;
+
+  --about-mint:#39FF14;
+  --about-mint-deep:#14D800;
+  --about-mint-ink:#14D800;
+  --about-mint-soft:#A8FF78;
+  --about-mint-glow:rgba(57,255,20,.45);
+
+  --about-glass:rgba(255,255,255,.55);
+  --about-glass-strong:rgba(255,255,255,.72);
+  --about-glass-border:rgba(255,255,255,.65);
+  --about-glass-border-soft:rgba(255,255,255,.45);
+  --about-glass-hair:rgba(17,24,39,.08);
+
+  --about-blur-lg:30px;
+  --about-radius-md:24px;
+  --about-radius-lg:32px;
+
+  --about-dur-fast:250ms;
+  --about-dur-slow:500ms;
+  --about-dur-xslow:900ms;
+  --about-ease-out:cubic-bezier(.16,1,.3,1);
+
+  --about-lift-sm:-8px;
+  --about-font-display:'Inter', sans-serif;
+}
+
+/* =========================================================
+   PAGE BACKGROUND
+   ========================================================= */
+
+body{
+  background:
+    radial-gradient(ellipse 900px 650px at 12% -4%, rgba(57,255,20,.14), transparent 60%),
+    radial-gradient(ellipse 800px 600px at 88% 18%, rgba(255,255,255,.32), transparent 62%),
+    radial-gradient(ellipse 900px 700px at 20% 60%, rgba(217,207,251,.22), transparent 65%),
+    radial-gradient(ellipse 1000px 600px at 85% 92%, rgba(57,255,20,.10), transparent 68%),
+    linear-gradient(180deg, #FBFEFC 0%, #F3FAF6 30%, #EEF7F5 60%, #F4FAF9 100%);
+  background-attachment:fixed;
+  background-color:var(--about-bg-0);
+  -webkit-font-smoothing:antialiased;
+}
+
+@media (max-width:900px){
+  .glow-blob{opacity:.35; filter:blur(60px);}
+}
+
+/* =========================================================
+   SHARED UTILITIES
+   ========================================================= */
+
+.about-container{
+  max-width:1200px;
+  margin:0 auto;
+  padding:0 40px;
+  position:relative;
+  z-index:2;
+}
+
+.text-center{text-align:center;}
+
+.text-dimmed{color:var(--about-ink-faint);}
+
+.cyber-label{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-family:'Inter', sans-serif;
+  font-size:13px;
+  font-weight:500;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--about-ink);
+  margin-bottom:18px;
+
+  padding:6px 14px;
+  border-radius:100px;
+  background:rgba(255,255,255,.15);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+
+  border:1px solid rgba(255,255,255,.25);
+  box-shadow:
+    0 4px 16px rgba(0,0,0,.05),
+    inset 0 1px 1px rgba(255,255,255,.4);
+}
+
+.cyber-label::before{
+  content:"";
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:var(--about-mint-deep);
+  box-shadow:0 0 8px var(--about-mint-deep);
+}
+
+.section-title{
+  font-family:'Inter', sans-serif;
+  font-weight:700;
+  font-size:clamp(30px,4.2vw,46px);
+  line-height:1.15;
+  letter-spacing:-.01em;
+  color:var(--about-ink);
+}
+
+section{
+  position:relative;
+  padding:130px 40px;
+}
+
+/* =========================================================
+   REVEAL-ON-SCROLL
+   Toggled by js/about.js (ScrollTrigger) adding ".in" once an
+   element scrolls into view. Each variant differs only in its
+   starting transform so the page doesn't read as one repeated
+   effect. Elements that already own a hover "transition" (the
+   glass-card / team-card / telemetry-box components) fold
+   their reveal-in state directly into their own rule instead
+   of using these utilities — see their respective CSS files.
+   ========================================================= */
+
+.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur{
+  transition:
+    opacity var(--about-dur-slow) var(--about-ease-out),
+    transform var(--about-dur-slow) var(--about-ease-out),
+    filter var(--about-dur-slow) var(--about-ease-out);
+}
+
+/* Ease in — straight fade + rise */
+.reveal{ opacity:0; transform:translateY(28px); }
+
+/* Ease in — from the side */
+.reveal-left{ opacity:0; transform:translateX(-36px); }
+.reveal-right{ opacity:0; transform:translateX(36px); }
+
+/* Pop up — soft scale, never from 0 */
+.reveal-scale{ opacity:0; transform:translateY(18px) scale(.94); }
+
+/* Ease in — with a blur-focus resolve */
+.reveal-blur{ opacity:0; transform:translateY(20px); filter:blur(8px); }
+
+.reveal.in, .reveal-left.in, .reveal-right.in, .reveal-scale.in, .reveal-blur.in{
+  opacity:1;
+  transform:none;
+  filter:blur(0);
+}
+
+@media (prefers-reduced-motion: reduce){
+  .reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur{
+    transition:none !important;
+    opacity:1 !important;
+    transform:none !important;
+    filter:none !important;
+  }
+}
+
+@media (max-width:768px){
+  section{padding:90px 24px;}
+}

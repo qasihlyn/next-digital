@@ -1,0 +1,257 @@
+/* =========================================================
+   NEXT DIGITAL — CONTACT / SECTION 2: FORM
+   Requires about-shared.css to be loaded first (shared tokens
+   and utilities: .about-container, .cyber-label, .reveal-*).
+   ========================================================= */
+
+.contact-form-section{
+  position:relative;
+  padding:60px 40px 130px;
+}
+
+.contact-form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:64px;
+  align-items:start;
+}
+
+@media (max-width:900px){
+  .contact-form-grid{
+    grid-template-columns:1fr;
+    gap:40px;
+  }
+}
+
+/* ---------------------------------------------------------
+   LEFT — INFO COLUMN
+--------------------------------------------------------- */
+
+.contact-info-heading{
+  margin:18px 0 20px;
+  font-family:'Inter', sans-serif;
+  font-weight:700;
+  font-size:clamp(1.9rem,3vw,2.6rem);
+  line-height:1.15;
+  letter-spacing:-.01em;
+  color:var(--about-ink);
+  max-width:480px;
+}
+
+.contact-info-sub{
+  max-width:480px;
+  margin-bottom:36px;
+  font-size:15.5px;
+  line-height:1.75;
+  color:var(--about-ink-soft);
+}
+
+.contact-info-list{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+
+.contact-info-card{
+  padding:22px 26px;
+  background:var(--about-glass);
+  backdrop-filter:blur(var(--about-blur-lg));
+  -webkit-backdrop-filter:blur(var(--about-blur-lg));
+  border:1px solid var(--about-glass-border);
+  border-radius:var(--about-radius-md);
+  box-shadow:0 10px 30px rgba(16,19,16,.06), inset 0 1px 0 rgba(255,255,255,.8);
+
+  /* Reveal-on-scroll rest state — ease in. Folded in here
+     (not the shared .reveal utility) so it shares one
+     transition list with the hover response below. */
+  opacity:0;
+  transform:translateY(20px);
+
+  transition:
+    opacity .5s var(--about-ease-out),
+    border-color var(--about-dur-fast),
+    transform var(--about-dur-fast) var(--about-ease-out),
+    box-shadow var(--about-dur-fast);
+}
+
+.contact-info-card.in{
+  opacity:1;
+  transform:none;
+}
+
+.contact-info-card:hover{
+  border-color:rgba(57,255,20,.5);
+  transform:translateY(var(--about-lift-sm));
+  box-shadow:0 18px 40px -16px rgba(20,216,0,.3), inset 0 1px 0 rgba(255,255,255,.8);
+}
+
+.contact-info-label{
+  display:block;
+  margin-bottom:8px;
+  font-family:'Inter', sans-serif;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--about-mint-deep);
+}
+
+.contact-info-value{
+  display:block;
+  font-family:'Inter', sans-serif;
+  font-size:16px;
+  font-weight:600;
+  color:var(--about-ink);
+}
+
+a.contact-info-value{
+  transition:color var(--about-dur-fast) ease;
+}
+
+a.contact-info-value:hover{
+  color:var(--about-mint-deep);
+}
+
+/* ---------------------------------------------------------
+   RIGHT — FORM CARD
+--------------------------------------------------------- */
+
+.contact-form-card{
+  position:relative;
+  overflow:hidden;
+
+  padding:44px 40px 40px;
+
+  border-radius:var(--about-radius-lg);
+
+  background:linear-gradient(160deg, rgba(255,255,255,.85) 0%, var(--about-mint-soft) 140%);
+
+  border:1px solid rgba(255,255,255,.75);
+
+  backdrop-filter:blur(var(--about-blur-lg)) saturate(180%);
+  -webkit-backdrop-filter:blur(var(--about-blur-lg)) saturate(180%);
+
+  box-shadow:
+    0 30px 80px rgba(16,19,16,.10),
+    inset 0 1px 0 rgba(255,255,255,.95);
+}
+
+.contact-form-brand{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:18px;
+  font-family:'Inter', sans-serif;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--about-ink);
+}
+
+.contact-form-brand i{
+  color:var(--about-mint-deep);
+}
+
+.contact-form-heading{
+  margin-bottom:10px;
+  font-family:'Inter', sans-serif;
+  font-weight:700;
+  font-size:clamp(1.6rem,2.6vw,2rem);
+  letter-spacing:-.01em;
+  color:var(--about-ink);
+}
+
+.contact-form-sub{
+  max-width:400px;
+  margin-bottom:28px;
+  font-size:14.5px;
+  line-height:1.65;
+  color:var(--about-ink-soft);
+}
+
+.contact-page-form{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.contact-page-field{
+  width:100%;
+  padding:16px 20px;
+
+  font-family:'Inter', sans-serif;
+  font-size:14.5px;
+  color:var(--about-ink);
+
+  background:rgba(255,255,255,.7);
+  border:1px solid rgba(255,255,255,.85);
+  border-radius:var(--about-radius-md);
+
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9);
+
+  transition:border-color var(--about-dur-fast) ease, box-shadow var(--about-dur-fast) ease, background var(--about-dur-fast) ease;
+}
+
+.contact-page-field::placeholder{
+  color:var(--about-ink-faint);
+}
+
+.contact-page-field:focus{
+  outline:none;
+  border-color:var(--about-mint);
+  background:rgba(255,255,255,.92);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9), 0 0 0 3px var(--about-mint-glow);
+}
+
+.contact-page-message{
+  resize:vertical;
+  min-height:120px;
+}
+
+.contact-page-submit{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+
+  margin-top:6px;
+  padding:17px 24px;
+
+  border:none;
+  border-radius:var(--about-radius-md);
+
+  background:linear-gradient(135deg, var(--about-mint) 0%, var(--about-mint-deep) 100%);
+
+  font-family:'Inter', sans-serif;
+  font-size:15px;
+  font-weight:700;
+  color:#0b1a08;
+
+  cursor:pointer;
+
+  box-shadow:0 16px 36px -12px rgba(20,216,0,.5);
+
+  transition:transform var(--about-dur-fast) var(--about-ease-out), box-shadow var(--about-dur-fast) ease, filter var(--about-dur-fast) ease;
+}
+
+.contact-page-submit:hover{
+  box-shadow:0 20px 44px -14px rgba(20,216,0,.6);
+  filter:brightness(1.04);
+}
+
+.contact-page-submit:active{
+  transform:scale(.97);
+}
+
+.contact-page-response{
+  min-height:18px;
+  margin:2px 0 0;
+  font-size:13px;
+  color:var(--about-mint-deep);
+}
+
+@media (max-width:768px){
+  .contact-form-section{padding:40px 24px 90px;}
+  .contact-form-card{padding:34px 26px 30px;}
+}

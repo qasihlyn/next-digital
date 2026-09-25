@@ -1,0 +1,121 @@
+/* =========================================================
+   NEXT DIGITAL — ABOUT / SECTION 6: STATS & TELEMETRY
+   Requires about-shared.css to be loaded first (shared tokens
+   and utilities: .about-container, .reveal).
+   ========================================================= */
+
+.stats-telemetry{padding-top:0;}
+
+.stats-glass-grid{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:22px;
+}
+
+.telemetry-box{
+  position:relative;
+  padding:30px 26px;
+  background:var(--about-glass);
+  backdrop-filter:blur(var(--about-blur-lg));
+  -webkit-backdrop-filter:blur(var(--about-blur-lg));
+  border:1px solid var(--about-glass-border);
+  border-radius:var(--about-radius-lg);
+  box-shadow:0 18px 50px rgba(16,19,16,.10), inset 0 1px 0 rgba(255,255,255,.82);
+  overflow:hidden;
+
+  /* Reveal-on-scroll rest state — pop up, never from 0.
+     Folded in here (not a separate .reveal-scale class) so it
+     shares one transition list with the hover response below. */
+  opacity:0;
+  transform:translateY(18px) scale(.94);
+
+  transition:
+    opacity .5s var(--about-ease-out),
+    border-color var(--about-dur-fast) ease,
+    transform var(--about-dur-fast) var(--about-ease-out),
+    box-shadow var(--about-dur-fast) ease;
+}
+
+.telemetry-box.in{
+  opacity:1;
+  transform:none;
+}
+
+.telemetry-box::before{
+  content:"";
+  position:absolute; inset:0;
+  background:radial-gradient(circle at 15% 0%, rgba(57,255,20,.14), transparent 55%);
+  pointer-events:none;
+}
+
+.telemetry-box::after{
+  content:"";
+  position:absolute;
+  left:0; right:0; bottom:0; height:2px;
+  background:linear-gradient(90deg, transparent, var(--about-mint-deep), transparent);
+}
+
+.telemetry-box:hover{
+  border-color:rgba(57,255,20,.55);
+  transform:translateY(var(--about-lift-sm));
+  box-shadow:0 26px 60px -24px rgba(20,216,0,.35), inset 0 1px 0 rgba(255,255,255,.82);
+}
+
+.telemetry-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:22px;
+}
+
+.telemetry-tag{
+  font-family:'Inter', sans-serif;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.16em;
+  color:var(--about-ink-faint);
+}
+
+.telemetry-status{
+  font-family:'Inter', sans-serif;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.1em;
+  color:var(--about-mint-ink);
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+
+.telemetry-status::before{
+  content:"";
+  width:6px; height:6px;
+  border-radius:50%;
+  background:var(--about-mint-deep);
+  box-shadow:0 0 8px var(--about-mint-glow);
+}
+
+.telemetry-box .stat-num{
+  font-family:'Inter', sans-serif;
+  font-weight:700;
+  font-size:clamp(2.4rem,4.4vw,3.4rem);
+  line-height:.95;
+  letter-spacing:-.02em;
+  color:var(--about-ink);
+  margin-bottom:14px;
+}
+
+.telemetry-box .stat-label{
+  max-width:220px;
+  font-size:.94rem;
+  line-height:1.7;
+  color:var(--about-ink-soft);
+}
+
+@media (max-width:1024px){
+  .stats-glass-grid{grid-template-columns:1fr 1fr;}
+}
+
+@media (max-width:768px){
+  .stats-glass-grid{grid-template-columns:1fr;}
+}

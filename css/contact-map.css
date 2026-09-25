@@ -1,0 +1,114 @@
+/* =========================================================
+   NEXT DIGITAL — CONTACT / SECTION 3: MAP
+   Requires about-shared.css to be loaded first (shared tokens
+   and utilities: .about-container, .reveal-*).
+   ========================================================= */
+
+.contact-map-section{
+  padding:0 40px 140px;
+}
+
+.contact-map-frame{
+  position:relative;
+
+  border-radius:var(--about-radius-lg);
+  overflow:hidden;
+
+  border:1px solid rgba(255,255,255,.6);
+  box-shadow:0 40px 90px -30px rgba(16,19,16,.25);
+
+  background:var(--about-glass);
+}
+
+.contact-map-embed{
+  display:block;
+  width:100%;
+  height:clamp(360px, 46vw, 560px);
+  border:0;
+  filter:saturate(85%) brightness(1.02);
+}
+
+.contact-map-cards{
+  position:absolute;
+  left:50%;
+  bottom:28px;
+  transform:translateX(-50%);
+
+  display:grid;
+  grid-template-columns:repeat(3, minmax(200px, 1fr));
+  gap:20px;
+
+  width:min(1000px, calc(100% - 48px));
+}
+
+.contact-map-card{
+  padding:24px 22px;
+  text-align:center;
+
+  background:rgba(255,255,255,.72);
+  backdrop-filter:blur(var(--about-blur-lg)) saturate(180%);
+  -webkit-backdrop-filter:blur(var(--about-blur-lg)) saturate(180%);
+
+  border:1px solid rgba(255,255,255,.85);
+  border-radius:var(--about-radius-lg);
+
+  box-shadow:0 20px 50px -18px rgba(16,19,16,.22), inset 0 1px 0 rgba(255,255,255,.9);
+
+  transition:transform var(--about-dur-fast) var(--about-ease-out), box-shadow var(--about-dur-fast) ease;
+}
+
+.contact-map-card:hover{
+  transform:translateY(var(--about-lift-sm));
+  box-shadow:0 26px 60px -18px rgba(20,216,0,.3), inset 0 1px 0 rgba(255,255,255,.9);
+}
+
+.contact-map-icon{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  width:48px;
+  height:48px;
+  margin-bottom:14px;
+
+  border-radius:50%;
+  background:linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.6));
+  border:1px solid rgba(255,255,255,.9);
+
+  color:var(--about-mint-deep);
+  font-size:17px;
+
+  box-shadow:0 8px 20px rgba(16,19,16,.08);
+}
+
+.contact-map-card h4{
+  margin-bottom:8px;
+  font-family:'Inter', sans-serif;
+  font-size:15px;
+  font-weight:700;
+  color:var(--about-ink);
+}
+
+.contact-map-card p{
+  font-size:13.5px;
+  line-height:1.6;
+  color:var(--about-ink-soft);
+}
+
+@media (max-width:900px){
+  .contact-map-cards{
+    position:static;
+    transform:none;
+    width:auto;
+    grid-template-columns:1fr;
+    margin-top:-1px;
+    background:var(--about-glass);
+    padding:20px;
+  }
+
+  .contact-map-embed{height:340px;}
+}
+
+@media (max-width:768px){
+  .contact-map-section{padding:0 20px 90px;}
+}

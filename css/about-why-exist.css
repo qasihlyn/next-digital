@@ -1,0 +1,46 @@
+/* =========================================================
+   NEXT DIGITAL — ABOUT / SECTION 5: WHY WE EXIST
+   Requires about-shared.css to be loaded first (shared tokens).
+   ========================================================= */
+
+.why-exist{
+  position:relative;
+  padding:150px 40px;
+  overflow:hidden;
+}
+
+.parallax-bg-glow{
+  position:absolute;
+  left:50%; top:50%;
+  width:1000px; height:600px;
+  transform:translate(-50%,-50%);
+  background:radial-gradient(ellipse, rgba(57,255,20,.18), transparent 70%);
+  pointer-events:none;
+}
+
+.statement-content{
+  position:relative;
+  z-index:2;
+  max-width:920px;
+  margin:0 auto;
+}
+
+.huge-statement{
+  font-family:'Inter', sans-serif;
+  font-weight:700;
+  font-size:clamp(2.2rem,5vw,3.8rem);
+  line-height:1.25;
+  letter-spacing:-.02em;
+  margin-bottom:26px;
+
+  background:linear-gradient(135deg, #000000 0%, var(--about-mint) 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.statement-sub{
+  font-size:18px;
+  line-height:1.8;
+  color:var(--about-ink-soft);
+}

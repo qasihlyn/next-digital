@@ -1,0 +1,7 @@
+{
+  "hosting": {
+    "site": "next-digital-7e744",
+    "public": ".",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**", "README.md"]
+  }
+}

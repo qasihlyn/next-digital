@@ -1,0 +1,1172 @@
+/* =========================================================
+   NEXT DIGITAL
+   FILM ROW + PHONE SHOWCASE
+   LIQUID GLASS LIGHT THEME
+========================================================= */
+
+
+/* =========================================================
+   SHOWCASE
+========================================================= */
+
+.film-showcase {
+
+    --film-green: #39ff14;
+    --film-green-dark: #14d800;
+    --film-green-soft: #a8ff78;
+
+    position: relative;
+
+    width: 100%;
+
+    padding: 0 48px 70px;
+
+    box-sizing: border-box;
+
+}
+
+
+/* =========================================================
+   MAIN GLASS CONTAINER
+========================================================= */
+
+.filmrow-wrap {
+
+    position: relative;
+
+    width: 100%;
+    max-width: 1180px;
+
+    margin: 0 auto 34px;
+
+    padding: 32px 26px 40px;
+
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 36px;
+
+    border-radius: 32px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.60),
+            rgba(255,255,255,.25)
+        );
+
+    border: 1px solid rgba(255,255,255,.78);
+
+    backdrop-filter: blur(30px) saturate(130%);
+    -webkit-backdrop-filter: blur(30px) saturate(130%);
+
+    box-shadow:
+        0 40px 100px rgba(40,110,90,.14),
+        0 10px 30px rgba(40,110,90,.06),
+        inset 0 1px 0 rgba(255,255,255,.85);
+
+}
+
+
+/* =========================================================
+   GLASS HIGHLIGHT
+========================================================= */
+
+.filmrow-wrap::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 1px;
+
+    border-radius: 31px;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(255,255,255,.42),
+            transparent 35%,
+            transparent 70%,
+            rgba(168,255,120,.08)
+        );
+
+    z-index: 0;
+
+}
+
+
+/* =========================================================
+   FILM ROW
+========================================================= */
+
+.filmrow {
+
+    position: relative;
+
+    width: 100%;
+    height: 150px;
+
+    overflow: hidden;
+
+    border-radius: 24px;
+
+    cursor: grab;
+
+    z-index: 1;
+
+    -webkit-mask-image:
+        linear-gradient(
+            90deg,
+            transparent,
+            #000 8%,
+            #000 92%,
+            transparent
+        );
+
+    mask-image:
+        linear-gradient(
+            90deg,
+            transparent,
+            #000 8%,
+            #000 92%,
+            transparent
+        );
+
+}
+
+
+/* =========================================================
+   DRAGGING
+========================================================= */
+
+.filmrow:active {
+
+    cursor: grabbing;
+
+}
+
+
+/* =========================================================
+   TRACK
+========================================================= */
+
+.filmrow-track {
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    display: flex;
+
+    gap: 14px;
+
+    height: 100%;
+
+    will-change: transform;
+
+}
+
+
+/* =========================================================
+   FILM CARD
+========================================================= */
+
+.film-item {
+
+    position: relative;
+
+    flex: 0 0 220px;
+
+    height: 100%;
+
+    overflow: hidden;
+
+    border-radius: 18px;
+
+    background:
+        rgba(255,255,255,.35);
+
+    border: 1px solid rgba(255,255,255,.72);
+
+    box-shadow:
+        0 12px 30px rgba(30,90,70,.10),
+        inset 0 1px 0 rgba(255,255,255,.65);
+
+    filter:
+        saturate(.85)
+        brightness(.98);
+
+    transition:
+        transform .15s cubic-bezier(.19,1,.22,1),
+        box-shadow .15s cubic-bezier(.19,1,.22,1),
+        filter .15s ease;
+
+}
+
+
+/* =========================================================
+   IMAGE
+========================================================= */
+
+.film-item img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+}
+
+
+/* =========================================================
+   GLASS OVERLAY
+========================================================= */
+
+.film-item::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.05),
+            rgba(20,60,45,.28)
+        );
+
+    opacity: .4;
+
+    transition:
+        opacity .15s ease;
+
+}
+
+
+/* =========================================================
+   TOP GLASS REFLECTION
+========================================================= */
+
+.film-item::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 2;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            125deg,
+            rgba(255,255,255,.28),
+            transparent 35%,
+            transparent 70%
+        );
+
+    opacity: .35;
+
+}
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.film-item:hover,
+.film-item:focus {
+
+    transform:
+        translateY(-4px)
+        scale(1.015);
+
+    filter:
+        saturate(1)
+        brightness(1);
+
+    outline: none;
+
+}
+
+
+/* =========================================================
+   ACTIVE
+========================================================= */
+
+.film-item.is-active {
+
+    transform:
+        translateY(-6px)
+        scale(1.04);
+
+    box-shadow:
+
+        0 20px 44px -18px
+        rgba(40,150,110,.40),
+
+        0 0 0 2px
+        var(--film-green-dark),
+
+        inset 0 1px 0
+        rgba(255,255,255,.8);
+
+    filter:
+        saturate(1.05)
+        brightness(1.02);
+
+}
+
+
+.film-item.is-active::after {
+
+    opacity: .12;
+
+}
+
+
+/* =========================================================
+   PHONE
+========================================================= */
+
+.phone-mock {
+
+    position: relative;
+
+    width: 240px;
+
+    margin: 0 auto;
+
+    z-index: 3;
+
+}
+
+
+/* =========================================================
+   PHONE BODY
+========================================================= */
+
+.phone-body {
+
+    position: relative;
+
+    padding:
+        12px
+        12px
+        18px;
+
+    border-radius: 42px;
+
+    background:
+        linear-gradient(
+            145deg,
+            var(--phone-bezel-c) 0%,
+            var(--phone-bezel-d) 100%
+        );
+
+    box-shadow:
+
+        0 15px 35px
+        rgba(0,0,0,.18),
+
+        0 30px 60px
+        rgba(10,25,20,.22),
+
+        0 0 40px
+        rgba(16,185,129,.18),
+
+        inset 0 1px 1px
+        rgba(255,255,255,.30),
+
+        inset 0 -1px 2px
+        rgba(0,0,0,.80),
+
+        0 0 0 1px
+        rgba(255,255,255,.15);
+
+    transition:
+
+        transform
+        .2s cubic-bezier(.34,1.56,.64,1),
+
+        box-shadow
+        .2s ease;
+
+}
+
+
+/* =========================================================
+   PHONE HOVER
+========================================================= */
+
+.phone-mock:hover .phone-body {
+
+    transform:
+        translateY(-6px)
+        scale(1.02);
+
+    box-shadow:
+
+        0 22px 45px
+        rgba(0,0,0,.22),
+
+        0 40px 80px
+        rgba(10,25,20,.28),
+
+        0 0 50px
+        rgba(16,185,129,.28),
+
+        inset 0 1px 1.5px
+        rgba(255,255,255,.40),
+
+        0 0 0 1px
+        rgba(255,255,255,.25);
+
+}
+
+
+/* =========================================================
+   SIDE BUTTONS
+========================================================= */
+
+.phone-mock::before,
+.phone-mock::after {
+
+    content: "";
+
+    position: absolute;
+
+    background:
+        linear-gradient(
+            180deg,
+            var(--phone-bezel-a),
+            var(--phone-bezel-b)
+        );
+
+    border-radius: 2px;
+
+    box-shadow:
+        0 2px 4px rgba(0,0,0,.20);
+
+}
+
+
+/* Volume */
+
+.phone-mock::before {
+
+    left: -3px;
+
+    top: 75px;
+
+    width: 3px;
+
+    height: 48px;
+
+}
+
+
+/* Power */
+
+.phone-mock::after {
+
+    right: -3px;
+
+    top: 85px;
+
+    width: 3px;
+
+    height: 28px;
+
+}
+
+
+/* =========================================================
+   NOTCH
+========================================================= */
+
+.phone-notch {
+
+    position: relative;
+
+    width: 80px;
+
+    height: 18px;
+
+    margin: 0 auto 8px;
+
+    background: #080a0b;
+
+    border-radius:
+        0 0 16px 16px;
+
+    z-index: 5;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+
+.phone-notch::before {
+
+    content: "";
+
+    width: 32px;
+
+    height: 4px;
+
+    background: #1a2226;
+
+    border-radius: 2px;
+
+}
+
+
+/* =========================================================
+   STATUS BAR
+========================================================= */
+
+.phone-status {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    color:
+        rgba(255,255,255,.85);
+
+    padding:
+        0 10px 8px;
+
+}
+
+
+/* =========================================================
+   PHONE SCREEN
+========================================================= */
+
+.phone-media {
+
+    position: relative;
+
+    height: 350px;
+
+    overflow: hidden;
+
+    border-radius: 26px;
+
+    background:
+        linear-gradient(
+            160deg,
+            rgba(110,255,92,.15),
+            rgba(255,255,255,.15)
+        );
+
+    border:
+        1px solid rgba(0,0,0,.50);
+
+    box-shadow:
+        inset 0 0 12px
+        rgba(0,0,0,.40);
+
+}
+
+
+/* =========================================================
+   PHONE IMAGE
+========================================================= */
+
+.phone-media img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    display: block;
+
+    opacity: 1;
+
+    transform: scale(1);
+
+    transition:
+        opacity .25s ease,
+        transform .5s cubic-bezier(.19,1,.22,1);
+
+}
+
+
+/* =========================================================
+   IMAGE CHANGE ANIMATION
+========================================================= */
+
+.phone-media.is-changing img {
+
+    opacity: 0;
+
+    transform:
+        scale(1.06);
+
+}
+
+
+/* =========================================================
+   PHONE SCREEN GLASS
+========================================================= */
+
+.phone-media::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 3;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            115deg,
+            rgba(255,255,255,.30) 0%,
+            rgba(255,255,255,.08) 30%,
+            transparent 50%
+        );
+
+}
+
+
+/* =========================================================
+   PHONE NAV
+========================================================= */
+
+.phone-nav-footer {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    padding:
+        12px 6px 0;
+
+}
+
+
+.phone-nav-footer button {
+
+    font-family: inherit;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    color:
+        rgba(255,255,255,.85);
+
+    background:
+        rgba(255,255,255,.10);
+
+    border:
+        1px solid
+        rgba(255,255,255,.20);
+
+    border-radius: 999px;
+
+    padding:
+        6px 12px;
+
+    cursor: pointer;
+
+    transition:
+        all .15s ease;
+
+}
+
+
+.phone-nav-footer button:hover {
+
+    background:
+        rgba(255,255,255,.20);
+
+    color: #fff;
+
+    border-color:
+        var(--film-green-dark);
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+/* =========================================================
+   BOTTOM AREA
+========================================================= */
+
+.film-bottom {
+
+    width: 100%;
+
+    max-width: 1180px;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+}
+
+
+/* =========================================================
+   SOCIAL
+========================================================= */
+
+.film-social {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    font-size: 13px;
+
+    color:
+        rgba(35,42,45,.60);
+
+}
+
+
+.film-social a {
+
+    width: 32px;
+
+    height: 32px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-decoration: none;
+
+    color:
+        rgba(35,42,45,.70);
+
+    background:
+        rgba(255,255,255,.40);
+
+    border:
+        1px solid
+        rgba(255,255,255,.72);
+
+    transition:
+        all .15s
+        cubic-bezier(.19,1,.22,1);
+
+}
+
+
+.film-social a:hover {
+
+    transform:
+        translateY(-3px);
+
+    color:
+        #14d800;
+
+    border-color:
+        #14d800;
+
+}
+
+
+/* =========================================================
+   SCROLL HINT
+========================================================= */
+
+.film-scroll {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    font-size: 13px;
+
+    color:
+        rgba(35,42,45,.55);
+
+}
+
+
+.film-scroll span {
+
+    display: inline-block;
+
+    animation:
+        filmBounce 1s
+        ease-in-out
+        infinite;
+
+}
+
+
+@keyframes filmBounce {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(5px);
+
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 760px) {
+
+    .film-showcase {
+
+        padding:
+            0 20px 50px;
+
+    }
+
+    .filmrow-wrap {
+
+        padding:
+            24px 18px 32px;
+
+        gap: 24px;
+
+        border-radius: 26px;
+
+    }
+
+    .filmrow {
+
+        height: 120px;
+
+    }
+
+    .film-item {
+
+        flex-basis: 180px;
+
+    }
+
+    .phone-mock {
+
+        width: 220px;
+
+    }
+
+    .phone-media {
+
+        height: 320px;
+
+    }
+
+    .film-bottom {
+
+        flex-direction: column;
+
+        gap: 14px;
+
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .filmrow {
+
+        height: 105px;
+
+    }
+
+    .film-item {
+
+        flex-basis: 160px;
+
+    }
+
+    .phone-mock {
+
+        width: 205px;
+
+    }
+
+    .phone-media {
+
+        height: 300px;
+
+    }
+
+}
+
+/* =========================================================
+   FILM SHOWCASE HEADER
+========================================================= */
+
+.film-showcase {
+    position: relative;
+    width: 100%;
+    padding: 110px 48px 70px;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.film-header {
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto 52px;
+    text-align: center;
+}
+
+
+/* Small editorial label */
+
+.film-header-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+
+    margin-bottom: 20px;
+
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+
+    color: rgba(35, 42, 45, .58);
+}
+
+
+/* Neon green indicator */
+
+.film-header-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #39FF14;
+
+    box-shadow:
+        0 0 8px rgba(57,255,20,.65),
+        0 0 18px rgba(57,255,20,.28);
+
+    animation: filmHeaderPulse 2s ease-in-out infinite;
+}
+
+
+@keyframes filmHeaderPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: .8;
+    }
+
+    50% {
+        transform: scale(1.35);
+        opacity: 1;
+    }
+
+}
+
+
+/* =========================================================
+   MAIN HEADER
+========================================================= */
+
+.film-header-title {
+
+    margin: 0;
+
+    font-family: var(--font-display, "Manrope", sans-serif);
+
+    font-size: clamp(
+        3.5rem,
+        7vw,
+        6.5rem
+    );
+
+    font-weight: 800;
+
+    line-height: .92;
+
+    letter-spacing: -.065em;
+
+    color: rgba(0,0,0,.92);
+
+    text-shadow:
+        0 2px 0 rgba(0,0,0,.08),
+        0 20px 50px rgba(0,0,0,.07);
+}
+
+
+/* Green word */
+
+.film-header-title span {
+
+    display: inline-block;
+
+    background:
+        linear-gradient(
+            135deg,
+            #000000 0%,
+            #A8FF78 35%,
+            #39FF14 70%,
+            #14D800 100%
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+
+    filter:
+        drop-shadow(
+            0 0 10px rgba(57,255,20,.22)
+        )
+        drop-shadow(
+            0 0 24px rgba(57,255,20,.10)
+        );
+
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.film-header-subtitle {
+
+    max-width: 600px;
+
+    margin: 25px auto 0;
+
+    font-family: var(--font-primary);
+
+    font-size: 16px;
+
+    font-weight: 400;
+
+    line-height: 1.8;
+
+    letter-spacing: .005em;
+
+    color: rgba(35,42,45,.65);
+
+}
+
+
+/* =========================================================
+   FILM ROW SPACING
+========================================================= */
+
+.film-header + .filmrow-wrap {
+
+    margin-top: 0;
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 760px) {
+
+    .film-showcase {
+
+        padding:
+            75px
+            20px
+            50px;
+
+    }
+
+    .film-header {
+
+        margin-bottom: 35px;
+
+    }
+
+    .film-header-title {
+
+        font-size:
+            clamp(
+                3rem,
+                14vw,
+                5rem
+            );
+
+    }
+
+    .film-header-subtitle {
+
+        font-size: 15px;
+
+        max-width: 480px;
+
+    }
+
+}

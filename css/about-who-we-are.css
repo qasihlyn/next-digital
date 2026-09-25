@@ -1,0 +1,171 @@
+/* =========================================================
+   NEXT DIGITAL — ABOUT / SECTION 2: WHO WE ARE
+   Requires about-shared.css to be loaded first (shared tokens
+   and utilities: .about-container, .cyber-label, .reveal-*).
+   ========================================================= */
+
+.who-we-are{
+  position:relative;
+  padding:120px 0;
+}
+
+/* Layout */
+.grid-2col{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:center;
+}
+
+@media (max-width:900px){
+  .grid-2col{
+    grid-template-columns:1fr;
+    gap:48px;
+  }
+}
+
+/* Heading */
+.narrative-heading{
+  font-family:'Inter', sans-serif;
+  font-size:clamp(2.4rem,4vw,3.8rem);
+  font-weight:700;
+  line-height:1.12;
+  letter-spacing:-0.04em;
+  color:var(--about-ink);
+
+  text-wrap:balance;
+}
+
+/* Glass card */
+.relative-box{
+  position:relative;
+  overflow:hidden;
+
+  padding:48px 48px 48px 64px;
+
+  border-radius:32px;
+
+  background:linear-gradient(145deg, rgba(255,255,255,.48), rgba(255,255,255,.18));
+
+  border:1px solid rgba(255,255,255,.45);
+
+  backdrop-filter:blur(30px) saturate(180%);
+  -webkit-backdrop-filter:blur(30px) saturate(180%);
+
+  box-shadow:
+    0 30px 80px rgba(0,0,0,.08),
+    inset 0 1px 0 rgba(255,255,255,.95),
+    inset 0 -1px 0 rgba(255,255,255,.18),
+    0 0 45px rgba(57,255,20,.10);
+
+  /* Reveal-on-scroll rest state — ease in from the right.
+     Folded in here (not the shared .reveal-right utility) so
+     it shares one transition list with the hover response below. */
+  opacity:0;
+  transform:translateX(36px);
+
+  transition:
+    opacity .5s cubic-bezier(.16,1,.3,1),
+    transform .5s cubic-bezier(.22,1,.36,1),
+    box-shadow .5s ease,
+    border-color .5s ease;
+}
+
+.relative-box.in{
+  opacity:1;
+  transform:none;
+}
+
+/* Glass reflection */
+.relative-box::before{
+  content:"";
+  position:absolute;
+  inset:2px;
+  border-radius:inherit;
+
+  background:linear-gradient(
+    135deg,
+    rgba(255,255,255,.28),
+    rgba(255,255,255,.08) 25%,
+    transparent 45%,
+    transparent 65%,
+    rgba(255,255,255,.10)
+  );
+
+  pointer-events:none;
+}
+
+/* Neon glow */
+.relative-box::after{
+  content:"";
+  position:absolute;
+
+  width:260px;
+  height:260px;
+
+  right:-90px;
+  top:-90px;
+
+  background:radial-gradient(circle, rgba(57,255,20,.35), transparent 70%);
+
+  filter:blur(40px);
+
+  pointer-events:none;
+}
+
+/* Vertical accent */
+.animated-divider-line{
+  position:absolute;
+
+  left:28px;
+  top:40px;
+  bottom:40px;
+
+  width:5px;
+
+  border-radius:999px;
+
+  background:linear-gradient(to bottom, #ffffff, #39FF14, #14D800);
+
+  box-shadow:
+    0 0 12px rgba(57,255,20,.9),
+    0 0 24px rgba(57,255,20,.75),
+    0 0 48px rgba(57,255,20,.45);
+}
+
+/* Paragraph */
+.vision-paragraph{
+  position:relative;
+  z-index:2;
+
+  font-family:'Inter', sans-serif;
+  font-size:17px;
+  font-weight:400;
+  line-height:2;
+
+  color:rgba(32,38,42,.82);
+
+  max-width:58ch;
+  margin-bottom:22px;
+}
+
+.vision-paragraph:last-child{
+  margin-bottom:0;
+}
+
+/* Hover animation */
+.relative-box:hover{
+  transform:translateY(-8px) scale(1.015);
+
+  border-color:rgba(255,255,255,.65);
+
+  box-shadow:
+    0 45px 100px rgba(0,0,0,.10),
+    inset 0 1px 0 rgba(255,255,255,1),
+    inset 0 -1px 0 rgba(255,255,255,.20),
+    0 0 70px rgba(57,255,20,.22);
+}
+
+@media (max-width:1024px){
+  .relative-box{padding-left:0; margin-top:10px;}
+}
