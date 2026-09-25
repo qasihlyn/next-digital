@@ -2,11 +2,16 @@
    NEXT DIGITAL — STANDALONE CONTACT PAGE FORM
    =========================================================
 
-   Real fetch() POST to /contact, replacing contact-page.js's
-   old setTimeout fake-success.
+   Writes submissions to Cloud Firestore (collection
+   `contactSubmissions`) via js/firebase-init.js, replacing the
+   old fetch() POST to a form endpoint.
+
+   Loaded as <script type="module"> in contact.html.
    ========================================================= */
 
 "use strict";
+
+import { addContactSubmission } from "./firebase-init.js";
 
 window.initContactPageForm = function initContactPageForm() {
     const form = document.getElementById("contact-page-form");
@@ -26,26 +31,19 @@ window.initContactPageForm = function initContactPageForm() {
             return;
         }
 
-        const csrfToken = document
-            .querySelector('meta[name="csrf-token"]')
-            .getAttribute("content");
-
         submitButton.disabled = true;
         submitButton.querySelector("span").textContent = "Sending…";
 
         try {
-            const result = await fetch(form.action, {
-                method: "POST",
-                headers: {
-                    "X-CSRF-TOKEN": csrfToken,
-                    Accept: "application/json"
-                },
-                body: new FormData(form)
-            });
+            const fields = new FormData(form);
 
-            if (!result.ok) {
-                throw new Error(`HTTP ${result.status}`);
-            }
+            await addContactSubmission({
+                name: (fields.get("name") || "").toString().trim(),
+                email: (fields.get("email") || "").toString().trim(),
+                subject: (fields.get("subject") || "").toString().trim(),
+                message: (fields.get("message") || "").toString().trim(),
+                source: (fields.get("source") || "contact_page").toString()
+            });
 
             if (response) {
                 response.textContent = "Thanks — we'll get back to you within 24 hours.";
