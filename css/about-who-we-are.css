@@ -166,6 +166,11 @@
     0 0 70px rgba(57,255,20,.22);
 }
 
+@media (max-width:600px){
+  /* this section has no side padding of its own */
+  .who-we-are{padding-left:20px; padding-right:20px;}
+}
+
 @media (max-width:1024px){
-  .relative-box{padding-left:0; margin-top:10px;}
+  .relative-box{padding:36px 28px 36px 52px; margin-top:10px;}
 }

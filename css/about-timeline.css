@@ -115,4 +115,7 @@
   .timeline-item.right-slide{left:0; transform:translateX(30px);}
   .timeline-item.left-slide .timeline-node{left:13px; right:auto;}
   .timeline-item.right-slide .timeline-node{left:13px;}
+  /* Must come after the slide offsets above, or they win and the
+     cards stay 30px off to the right */
+  .timeline-item.in{transform:translateX(0);}
 }

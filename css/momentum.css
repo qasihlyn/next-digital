@@ -111,7 +111,9 @@
 
 .momentum-viewport {
     position: absolute;
-    inset: 0;
+    /* Start below .momentum-intro so the centered stages can't
+       slide up under the heading on shorter screens. */
+    inset: clamp(120px, 20vh, 200px) 0 0;
     display: grid;
     place-items: center;
 }
@@ -456,6 +458,19 @@
     .momentum-cursor {
         width: 8px;
         height: 8px;
+    }
+}
+
+/* Phones: the stages sat centred in the space below the intro,
+   leaving a ~190px gap under the heading. Pin them just below it. */
+@media (max-width: 760px) and (prefers-reduced-motion: no-preference) {
+    .momentum-viewport {
+        inset: 0;
+        place-items: start center;
+    }
+
+    .momentum-stage {
+        top: calc(var(--momentum-intro-bottom, 100px) + 40px);
     }
 }
 

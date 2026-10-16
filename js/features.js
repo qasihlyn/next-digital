@@ -109,7 +109,9 @@ window.initFeatures = function initFeatures() {
        LARGE IMAGE CARD — CINEMATIC PARALLAX
        ===================================================== */
 
-    if (mediaCard) {
+    // Desktop only: in the single-column mobile stack the -35px drift
+    // pushes this card over the bottom of the card above it.
+    if (mediaCard && window.matchMedia("(min-width: 761px)").matches) {
 
         gsap.fromTo(
             mediaCard,
@@ -169,9 +171,13 @@ window.initFeatures = function initFeatures() {
        CARD PARALLAX
        ===================================================== */
 
+    // Desktop only, same as the media-card parallax above: stacked in
+    // one column on mobile, opposite drift makes neighbouring cards overlap.
+    const isDesktop = window.matchMedia("(min-width: 761px)").matches;
+
     cards.forEach((card, index) => {
 
-        if (card.classList.contains("feature-media")) return;
+        if (!isDesktop || card.classList.contains("feature-media")) return;
 
         const direction = index % 2 === 0 ? 1 : -1;
 

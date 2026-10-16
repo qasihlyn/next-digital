@@ -128,9 +128,9 @@ window.initConverts = function convertsEngine() {
         return { x: r.left + r.width / 2 - rowRect.left, y: r.top + r.height / 2 - rowRect.top };
       }
       function fireBeam(card) {
-        const isLeft = cards.indexOf(card) === 0;
-        const pathEl = document.getElementById(isLeft ? 'beamPathLeft' : 'beamPathRight');
-        const pulseEl = document.getElementById(isLeft ? 'beamPulseLeft' : 'beamPulseRight');
+        const side = ['Left', 'Right', 'Bottom', 'BottomRight'][cards.indexOf(card)] || 'Right';
+        const pathEl = document.getElementById('beamPath' + side);
+        const pulseEl = document.getElementById('beamPulse' + side);
         if (!pathEl || !pulseEl) return;
         const start = getCenter(card.querySelector('.card-thumb') || card);
         const end = getCenter(phoneScreen);
@@ -178,6 +178,11 @@ window.initConverts = function convertsEngine() {
         pendingVideoUrl = card.dataset.video || null;
         pendingMeta = { title: card.dataset.title, meta1: card.dataset.meta1, meta2: card.dataset.meta2 };
         fireBeam(card);
+        // Stacked layout (phone above the cards): bring the phone into
+        // view so the visitor actually sees the video switch.
+        if (phone && window.matchMedia('(max-width: 980px)').matches) {
+          phone.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'center' });
+        }
       }
       const handleCardClick = e => activateCard(e.currentTarget);
       const handleCardKeydown = e => {

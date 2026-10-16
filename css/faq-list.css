@@ -172,9 +172,46 @@
   color:var(--about-ink-soft);
 }
 
+/* Bulleted answer (e.g. "What services you offer ?") */
+.faq-points{
+  display:grid;
+  gap:8px;
+  margin:0;
+  padding:0 26px 24px 80px;
+  max-width:760px;
+  list-style:none;
+
+  font-size:15px;
+  line-height:1.6;
+  color:var(--about-ink-soft);
+}
+
+.faq-points li{
+  position:relative;
+  padding-left:20px;
+}
+
+.faq-points li::before{
+  position:absolute;
+  top:.62em;
+  left:0;
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  content:"";
+  background:var(--green, #39FF14);
+  box-shadow:0 0 0 3px rgba(57,255,20,.16);
+}
+
+.faq-points strong{
+  font-weight:700;
+  color:var(--about-ink, #1E2A28);
+}
+
 @media (max-width:600px){
   .faq-section{padding:110px 20px 90px;}
   .faq-toggle{padding:18px 18px;}
-  .faq-answer p{padding:0 18px 20px 62px;}
+  .faq-answer p,
+  .faq-points{padding:0 18px 20px 18px;}
   .faq-question{font-size:15.5px;}
 }

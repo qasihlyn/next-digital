@@ -411,7 +411,10 @@
      color:
         #000000;
 
-    padding-bottom: 0.05em;
+    /* Extra bottom room so descenders (the "g" in "something")
+       aren't clipped; the negative margin keeps line spacing the same. */
+    padding-bottom: 0.2em;
+    margin-bottom: -0.15em;
 }
 
 

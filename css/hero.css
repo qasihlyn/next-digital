@@ -53,11 +53,9 @@
     overflow: clip;
 
     background:
-        radial-gradient(
-            circle at 80% 15%,
+        radial-gradient(circle at 80% 15%,
             rgba(110, 255, 92, 0.16),
-            transparent 30%
-        ),
+            transparent 30%),
         #F6FBF8;
 }
 
@@ -77,11 +75,9 @@
     isolation: isolate;
 
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             rgba(255, 255, 255, 0.94),
-            rgba(234, 247, 241, 0.9)
-        );
+            rgba(234, 247, 241, 0.9));
 }
 
 
@@ -121,13 +117,11 @@
     pointer-events: none;
 
     background:
-        linear-gradient(
-            90deg,
+        linear-gradient(90deg,
             rgba(255, 255, 255, 0.82) 0%,
             rgba(255, 255, 255, 0.3) 30%,
             rgba(255, 255, 255, 0.04) 62%,
-            rgba(255, 255, 255, 0.26) 100%
-        );
+            rgba(255, 255, 255, 0.26) 100%);
 
     mix-blend-mode: screen;
 
@@ -164,14 +158,12 @@
     pointer-events: none;
 
     background:
-        radial-gradient(
-            circle at 36% 32%,
+        radial-gradient(circle at 36% 32%,
             rgba(255, 255, 255, 0.9) 0%,
             rgba(255, 255, 255, 0.48) 22%,
             rgba(110, 255, 92, 0.42) 38%,
             rgba(110, 255, 92, 0.14) 56%,
-            transparent 72%
-        );
+            transparent 72%);
 
     filter: blur(32px);
 
@@ -207,12 +199,10 @@
     pointer-events: none;
 
     background:
-        radial-gradient(
-            circle,
+        radial-gradient(circle,
             rgba(110, 255, 92, 0.22),
             rgba(255, 255, 255, 0.22) 35%,
-            transparent 68%
-        );
+            transparent 68%);
 
     filter: blur(48px);
 
@@ -237,11 +227,9 @@
     pointer-events: none;
 
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             rgba(255, 255, 255, 0.6),
-            rgba(255, 255, 255, 0.12)
-        );
+            rgba(255, 255, 255, 0.12));
 
     box-shadow:
         0 1px 0 rgba(255, 255, 255, 0.9) inset,
@@ -303,8 +291,7 @@
     justify-content: center;
 
     padding:
-        0
-        clamp(24px, 7vw, 110px);
+        0 clamp(24px, 7vw, 110px);
 
     pointer-events: none;
 }
@@ -335,11 +322,9 @@
     color: rgba(30, 42, 40, 0.78);
 
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             rgba(255, 255, 255, 0.76),
-            rgba(255, 255, 255, 0.28)
-        );
+            rgba(255, 255, 255, 0.28));
 
     box-shadow:
         0 1px 0 rgba(255, 255, 255, 0.95) inset,
@@ -347,12 +332,10 @@
         0 12px 40px rgba(0, 0, 0, 0.08);
 
     backdrop-filter:
-        blur(var(--glass-blur))
-        saturate(145%);
+        blur(var(--glass-blur)) saturate(145%);
 
     -webkit-backdrop-filter:
-        blur(var(--glass-blur))
-        saturate(145%);
+        blur(var(--glass-blur)) saturate(145%);
 
     font:
         600 10px/1 var(--font-display);
@@ -388,12 +371,10 @@
     content: "";
 
     background:
-        linear-gradient(
-            90deg,
+        linear-gradient(90deg,
             transparent,
             rgba(255, 255, 255, 0.9),
-            transparent
-        );
+            transparent);
 
     transform: skewX(-20deg);
 
@@ -471,7 +452,7 @@
    TITLE WORDS
    ========================================================= */
 
-.hero-title > * {
+.hero-title>* {
     display: block;
 
     will-change:
@@ -531,12 +512,10 @@
     pointer-events: none;
 
     background:
-        linear-gradient(
-            90deg,
+        linear-gradient(90deg,
             transparent,
             rgba(255, 255, 255, 0.4),
-            transparent
-        );
+            transparent);
 
     filter: blur(8px);
 
@@ -609,11 +588,9 @@
     color: var(--black);
 
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             rgba(255, 255, 255, 0.72),
-            rgba(255, 255, 255, 0.26)
-        );
+            rgba(255, 255, 255, 0.26));
 
     box-shadow:
         0 1px 0 rgba(255, 255, 255, 0.95) inset,
@@ -621,20 +598,18 @@
         0 30px 80px rgba(0, 0, 0, 0.13);
 
     backdrop-filter:
-        blur(var(--glass-blur-heavy))
-        saturate(150%);
+        blur(var(--glass-blur-heavy)) saturate(150%);
 
     -webkit-backdrop-filter:
-        blur(var(--glass-blur-heavy))
-        saturate(150%);
+        blur(var(--glass-blur-heavy)) saturate(150%);
 
     will-change:
         transform,
         opacity;
 
     animation:
-        card-enter 1.2s 0.75s var(--ease-bounce) both,
-        card-float 6s 2s ease-in-out infinite;
+        card-enter 1.2s 0.75s var(--ease-bounce) backwards,
+        card-float 6s 1.95s ease-in-out infinite;
 }
 
 
@@ -658,12 +633,10 @@
     pointer-events: none;
 
     background:
-        radial-gradient(
-            circle,
+        radial-gradient(circle,
             rgba(110, 255, 92, 0.46),
             rgba(255, 255, 255, 0.16) 38%,
-            transparent 68%
-        );
+            transparent 68%);
 
     filter: blur(4px);
 
@@ -690,12 +663,10 @@
     pointer-events: none;
 
     background:
-        linear-gradient(
-            90deg,
+        linear-gradient(90deg,
             transparent,
             rgba(255, 255, 255, 0.8),
-            transparent
-        );
+            transparent);
 
     transform: skewX(-20deg);
 
@@ -826,11 +797,9 @@
     opacity: 0;
 
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             rgba(255, 255, 255, 0.68),
-            rgba(255, 255, 255, 0.2)
-        );
+            rgba(255, 255, 255, 0.2));
 
     box-shadow:
         0 1px 0 rgba(255, 255, 255, 0.95) inset,
@@ -838,17 +807,13 @@
         0 30px 80px rgba(0, 0, 0, 0.1);
 
     backdrop-filter:
-        blur(var(--glass-blur-heavy))
-        saturate(150%);
+        blur(var(--glass-blur-heavy)) saturate(150%);
 
     -webkit-backdrop-filter:
-        blur(var(--glass-blur-heavy))
-        saturate(150%);
+        blur(var(--glass-blur-heavy)) saturate(150%);
 
     transform:
-        translateY(50px)
-        scale(0.92)
-        rotateX(7deg);
+        translateY(50px) scale(0.92) rotateX(7deg);
 
     will-change:
         transform,
@@ -881,11 +846,9 @@
     pointer-events: none;
 
     background:
-        radial-gradient(
-            circle,
+        radial-gradient(circle,
             rgba(110, 255, 92, 0.34),
-            transparent 68%
-        );
+            transparent 68%);
 
     filter: blur(5px);
 
@@ -910,12 +873,10 @@
     pointer-events: none;
 
     background:
-        linear-gradient(
-            115deg,
+        linear-gradient(115deg,
             transparent 26%,
             rgba(255, 255, 255, 0.55) 48%,
-            transparent 67%
-        );
+            transparent 67%);
 
     background-size: 230% 100%;
 
@@ -1001,11 +962,9 @@
     content: "";
 
     background:
-        linear-gradient(
-            90deg,
+        linear-gradient(90deg,
             var(--green),
-            transparent
-        );
+            transparent);
 }
 
 
@@ -1098,7 +1057,7 @@
         translateX(-50%);
 
     animation:
-        scroll-indicator-enter 1s 1.2s var(--ease-bounce) both,
+        scroll-indicator-enter 1s 1.2s var(--ease-bounce) backwards,
         scroll-indicator-float 3s 2s ease-in-out infinite;
 }
 
@@ -1132,12 +1091,10 @@
     content: "";
 
     background:
-        linear-gradient(
-            to bottom,
+        linear-gradient(to bottom,
             transparent,
             var(--green),
-            transparent
-        );
+            transparent);
 
     box-shadow:
         0 0 12px rgba(110, 255, 92, 0.9);
@@ -1224,9 +1181,7 @@
         filter: blur(10px);
 
         transform:
-            translate3d(-35px, 20px, 0)
-            scale(0.82)
-            rotate(-4deg);
+            translate3d(-35px, 20px, 0) scale(0.82) rotate(-4deg);
     }
 
     to {
@@ -1235,14 +1190,13 @@
         filter: blur(0);
 
         transform:
-            translate3d(0, 0, 0)
-            scale(1)
-            rotate(0);
+            translate3d(0, 0, 0) scale(1) rotate(0);
     }
 }
 
 
 @keyframes label-float {
+
     0%,
     100% {
         transform: translateY(0);
@@ -1255,6 +1209,7 @@
 
 
 @keyframes label-shine {
+
     0%,
     55% {
         left: -80%;
@@ -1274,21 +1229,20 @@
         opacity: 0;
 
         transform:
-            scale(0)
-            rotate(-180deg);
+            scale(0) rotate(-180deg);
     }
 
     to {
         opacity: 1;
 
         transform:
-            scale(1)
-            rotate(0);
+            scale(1) rotate(0);
     }
 }
 
 
 @keyframes dot-pulse {
+
     0%,
     100% {
         box-shadow:
@@ -1313,9 +1267,7 @@
         filter: blur(18px);
 
         transform:
-            translate3d(0, 70px, 0)
-            scale(0.92)
-            rotateX(12deg);
+            translate3d(0, 70px, 0) scale(0.92) rotateX(12deg);
     }
 
     to {
@@ -1324,9 +1276,7 @@
         filter: blur(0);
 
         transform:
-            translate3d(0, 0, 0)
-            scale(1)
-            rotateX(0);
+            translate3d(0, 0, 0) scale(1) rotateX(0);
     }
 }
 
@@ -1336,54 +1286,47 @@
         opacity: 0;
 
         filter:
-            blur(15px)
-            saturate(0);
+            blur(15px) saturate(0);
 
         transform:
-            translate3d(45px, 25px, 0)
-            scale(0.9)
-            rotate(2deg);
+            translate3d(45px, 25px, 0) scale(0.9) rotate(2deg);
     }
 
     to {
         opacity: 1;
 
         filter:
-            blur(0)
-            saturate(1);
+            blur(0) saturate(1);
 
         transform:
-            translate3d(0, 0, 0)
-            scale(1)
-            rotate(0);
+            translate3d(0, 0, 0) scale(1) rotate(0);
     }
 }
 
 
 @keyframes green-breathe {
+
     0%,
     100% {
         filter:
-            brightness(1)
-            saturate(1);
+            brightness(1) saturate(1);
     }
 
     50% {
         filter:
-            brightness(1.08)
-            saturate(1.15);
+            brightness(1.08) saturate(1.15);
     }
 }
 
 
 @keyframes title-shine {
+
     0%,
     45% {
         opacity: 0;
 
         transform:
-            translateX(-140%)
-            skewX(-18deg);
+            translateX(-140%) skewX(-18deg);
     }
 
     60% {
@@ -1395,8 +1338,7 @@
         opacity: 0;
 
         transform:
-            translateX(420%)
-            skewX(-18deg);
+            translateX(420%) skewX(-18deg);
     }
 }
 
@@ -1433,9 +1375,7 @@
         filter: blur(15px);
 
         transform:
-            translate3d(70px, 90px, 0)
-            rotate(8deg)
-            scale(0.72);
+            translate3d(70px, 90px, 0) rotate(8deg) scale(0.72);
     }
 
     to {
@@ -1444,37 +1384,32 @@
         filter: blur(0);
 
         transform:
-            translate3d(0, 0, 0)
-            rotate(-2deg)
-            scale(1);
+            translate3d(0, 0, 0) rotate(-2deg) scale(1);
     }
 }
 
 
 @keyframes card-float {
+
     0%,
     100% {
         transform:
-            translate3d(0, 0, 0)
-            rotate(-2deg);
+            translate3d(0, 0, 0) rotate(-2deg);
     }
 
     25% {
         transform:
-            translate3d(-7px, -12px, 0)
-            rotate(1deg);
+            translate3d(-7px, -12px, 0) rotate(1deg);
     }
 
     50% {
         transform:
-            translate3d(3px, -18px, 0)
-            rotate(2deg);
+            translate3d(3px, -18px, 0) rotate(2deg);
     }
 
     75% {
         transform:
-            translate3d(8px, -8px, 0)
-            rotate(-1deg);
+            translate3d(8px, -8px, 0) rotate(-1deg);
     }
 }
 
@@ -1482,19 +1417,18 @@
 @keyframes card-orb {
     from {
         transform:
-            translate3d(0, 0, 0)
-            scale(0.8);
+            translate3d(0, 0, 0) scale(0.8);
     }
 
     to {
         transform:
-            translate3d(-35px, 25px, 0)
-            scale(1.15);
+            translate3d(-35px, 25px, 0) scale(1.15);
     }
 }
 
 
 @keyframes card-shine {
+
     0%,
     45% {
         left: -80%;
@@ -1512,19 +1446,18 @@
 @keyframes liquid-orb-drift {
     from {
         transform:
-            translate3d(-5%, -3%, 0)
-            scale(0.9);
+            translate3d(-5%, -3%, 0) scale(0.9);
     }
 
     to {
         transform:
-            translate3d(10%, 12%, 0)
-            scale(1.12);
+            translate3d(10%, 12%, 0) scale(1.12);
     }
 }
 
 
 @keyframes liquid-orb-breathe {
+
     0%,
     100% {
         opacity: 0.65;
@@ -1539,14 +1472,12 @@
 @keyframes liquid-orb-two {
     from {
         transform:
-            translate3d(-4%, 5%, 0)
-            scale(0.9);
+            translate3d(-4%, 5%, 0) scale(0.9);
     }
 
     to {
         transform:
-            translate3d(15%, -14%, 0)
-            scale(1.12);
+            translate3d(15%, -14%, 0) scale(1.12);
     }
 }
 
@@ -1556,19 +1487,18 @@
 @keyframes panel-orb {
     from {
         transform:
-            translate3d(0, 0, 0)
-            scale(0.8);
+            translate3d(0, 0, 0) scale(0.8);
     }
 
     to {
         transform:
-            translate3d(-25px, 35px, 0)
-            scale(1.18);
+            translate3d(-25px, 35px, 0) scale(1.18);
     }
 }
 
 
 @keyframes panel-shine {
+
     0%,
     50% {
         background-position: 120% 0;
@@ -1584,23 +1514,21 @@
 /* REFRACTION */
 
 @keyframes hero-refraction {
+
     0%,
     25% {
         transform:
-            translateX(-120%)
-            rotate(0);
+            translateX(-120%) rotate(0);
     }
 
     60% {
         transform:
-            translateX(15%)
-            rotate(0);
+            translateX(15%) rotate(0);
     }
 
     100% {
         transform:
-            translateX(120%)
-            rotate(0);
+            translateX(120%) rotate(0);
     }
 }
 
@@ -1614,9 +1542,7 @@
         filter: blur(8px);
 
         transform:
-            translateX(-50%)
-            translateY(30px)
-            scale(0.75);
+            translateX(-50%) translateY(30px) scale(0.75);
     }
 
     to {
@@ -1625,25 +1551,22 @@
         filter: blur(0);
 
         transform:
-            translateX(-50%)
-            translateY(0)
-            scale(1);
+            translateX(-50%) translateY(0) scale(1);
     }
 }
 
 
 @keyframes scroll-indicator-float {
+
     0%,
     100% {
         transform:
-            translateX(-50%)
-            translateY(0);
+            translateX(-50%) translateY(0);
     }
 
     50% {
         transform:
-            translateX(-50%)
-            translateY(-7px);
+            translateX(-50%) translateY(-7px);
     }
 }
 
@@ -1673,6 +1596,7 @@
 
 
 @keyframes ring-float {
+
     0%,
     100% {
         margin-top: 0;
@@ -1687,29 +1611,26 @@
 /* BLOBS */
 
 @keyframes blob-float {
+
     0%,
     100% {
         transform:
-            translate3d(0, 0, 0)
-            rotate(0deg);
+            translate3d(0, 0, 0) rotate(0deg);
     }
 
     25% {
         transform:
-            translate3d(15px, -18px, 0)
-            rotate(8deg);
+            translate3d(15px, -18px, 0) rotate(8deg);
     }
 
     50% {
         transform:
-            translate3d(-10px, -30px, 0)
-            rotate(-4deg);
+            translate3d(-10px, -30px, 0) rotate(-4deg);
     }
 
     75% {
         transform:
-            translate3d(-22px, -10px, 0)
-            rotate(5deg);
+            translate3d(-22px, -10px, 0) rotate(5deg);
     }
 }
 
@@ -1754,8 +1675,7 @@
         justify-content: center;
 
         padding:
-            0
-            7vw;
+            0 7vw;
     }
 
 
@@ -1844,12 +1764,10 @@
 
     .camera-sticky::after {
         background:
-            linear-gradient(
-                180deg,
+            linear-gradient(180deg,
                 rgba(255, 255, 255, 0.72),
                 rgba(255, 255, 255, 0.18) 45%,
-                rgba(255, 255, 255, 0.58)
-            );
+                rgba(255, 255, 255, 0.58));
     }
 
 
@@ -1857,8 +1775,7 @@
         justify-content: center;
 
         padding:
-            0
-            22px;
+            0 22px;
 
         padding-bottom: 7vh;
     }
@@ -1899,6 +1816,15 @@
 
     .hero-card {
         display: none;
+    }
+
+    /* Sits over the dark camera on phones: darker text plus a soft
+       light halo so it stays readable */
+    .hero-description {
+        color: rgba(30, 42, 40, 0.88);
+        text-shadow:
+            0 0 12px rgba(255, 255, 255, 0.95),
+            0 0 2px rgba(255, 255, 255, 0.9);
     }
 
 
@@ -1982,9 +1908,7 @@
 
     .hero-content {
         padding:
-            0
-            18px
-            7vh;
+            0 18px 7vh;
     }
 
 

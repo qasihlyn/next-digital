@@ -97,8 +97,8 @@ window.initHero = function initHero() {
     });
 
     gsap.to(".hero-content", { y: -140, opacity: 0, scrollTrigger: { trigger: ".camera-section", start: "top top", end: "35% top", scrub: true } });
-    gsap.to(".hero-card", { y: 90, opacity: 0, scrollTrigger: { trigger: ".camera-section", start: "top top", end: "30% top", scrub: true } });
-    gsap.to(".scroll-indicator", { opacity: 0, scrollTrigger: { trigger: ".camera-section", start: "top top", end: "10% top", scrub: true } });
+    gsap.fromTo(".hero-card", { y: 0, opacity: 1 }, { y: 90, opacity: 0, scrollTrigger: { trigger: ".camera-section", start: "top top", end: "30% top", scrub: true } });
+    gsap.fromTo(".scroll-indicator", { opacity: 1 }, { opacity: 0, scrollTrigger: { trigger: ".camera-section", start: "top top", end: "10% top", scrub: true } });
 
     window.heroCleanup = () => {
         window.removeEventListener("resize", resizeCanvas);

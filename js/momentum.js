@@ -44,6 +44,19 @@ window.initMomentum = function initMomentum() {
     const orbTwo = section.querySelector(".momentum-orb-two");
     const intro = section.querySelector(".momentum-intro");
 
+    // Feeds momentum.css: on phones the stages sit just below the
+    // intro heading, whose height depends on how the text wraps.
+    // offsetTop/offsetHeight ignore the scroll-driven y shift below.
+    const setIntroSpace = () => {
+        if (!intro) return;
+        section.style.setProperty(
+            "--momentum-intro-bottom",
+            `${intro.offsetTop + intro.offsetHeight}px`
+        );
+    };
+    setIntroSpace();
+    window.addEventListener("resize", setIntroSpace);
+
     const context = gsap.context(() => {
         gsap.set(stages, {
             autoAlpha: 0,
@@ -243,6 +256,7 @@ window.initMomentum = function initMomentum() {
     }, section);
 
     window.momentumCleanup = () => {
+        window.removeEventListener("resize", setIntroSpace);
         context.revert();
     };
 };

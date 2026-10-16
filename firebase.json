@@ -1,7 +1,44 @@
 {
   "hosting": {
-    "site": "next-digital-7e744",
+    "site": "nextdigital-web-20260713",
     "public": ".",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**", "README.md"]
+    "cleanUrls": true,
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**",
+      "README.md",
+      "firebase-debug.log",
+      "firebase.upload-*.json"
+    ],
+    "headers": [
+      {
+        "source": "**/*.@(html|js|css)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache"
+          }
+        ]
+      },
+      {
+        "source": "/",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache"
+          }
+        ]
+      },
+      {
+        "source": "/@(about|contact|faq)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache"
+          }
+        ]
+      }
+    ]
   }
 }

@@ -209,6 +209,88 @@ window.initNavbar = function initNavbar() {
         });
     }
 
+    /* =====================================================
+       MOBILE MENU — below 760px navbar.css hides the page
+       links, so add a menu button that opens a glass panel
+       with the same links. Built here so every page gets it
+       without duplicating markup in each HTML file.
+    ===================================================== */
+
+    if (navRight && navlinks.length) {
+        const toggle = document.createElement("button");
+        toggle.type = "button";
+        toggle.className = "nav-toggle";
+        toggle.setAttribute("aria-label", "Open menu");
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.setAttribute("aria-controls", "mobile-menu");
+        toggle.innerHTML =
+            '<span class="nav-toggle-bar" aria-hidden="true"></span>' +
+            '<span class="nav-toggle-bar" aria-hidden="true"></span>';
+        navRight.appendChild(toggle);
+
+        const panel = document.createElement("nav");
+        panel.className = "mobile-menu";
+        panel.id = "mobile-menu";
+        panel.setAttribute("aria-label", "Mobile");
+
+        navlinks.forEach(link => {
+            const item = document.createElement("a");
+            item.className = "mobile-menu-link";
+            item.href = link.getAttribute("href");
+            item.textContent = link.textContent.trim();
+
+            if (link === activeLink) {
+                item.setAttribute("aria-current", "page");
+            }
+
+            panel.appendChild(item);
+        });
+
+        document.body.appendChild(panel);
+
+        const setOpen = open => {
+            panel.classList.toggle("is-open", open);
+            toggle.setAttribute("aria-expanded", String(open));
+            toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+        };
+
+        const handleToggle = () => setOpen(!panel.classList.contains("is-open"));
+        const handleOutside = event => {
+            if (!panel.contains(event.target) && !toggle.contains(event.target)) {
+                setOpen(false);
+            }
+        };
+        const handleKey = event => {
+            if (event.key === "Escape" && panel.classList.contains("is-open")) {
+                setOpen(false);
+                toggle.focus();
+            }
+        };
+        const handleLinkClick = () => setOpen(false);
+        const desktopQuery = window.matchMedia("(min-width: 761px)");
+        const handleBreakpoint = () => {
+            if (desktopQuery.matches) {
+                setOpen(false);
+            }
+        };
+
+        toggle.addEventListener("click", handleToggle);
+        document.addEventListener("click", handleOutside);
+        document.addEventListener("keydown", handleKey);
+        panel.addEventListener("click", handleLinkClick);
+        desktopQuery.addEventListener("change", handleBreakpoint);
+
+        cleanupFns.push(() => {
+            toggle.removeEventListener("click", handleToggle);
+            document.removeEventListener("click", handleOutside);
+            document.removeEventListener("keydown", handleKey);
+            panel.removeEventListener("click", handleLinkClick);
+            desktopQuery.removeEventListener("change", handleBreakpoint);
+            toggle.remove();
+            panel.remove();
+        });
+    }
+
     window.navbarCleanup = () => {
         cleanupFns.forEach(fn => fn());
         window.navbarCleanup = null;
